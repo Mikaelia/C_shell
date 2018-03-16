@@ -11,6 +11,7 @@ char **tokenize(char *str)
 	int i;
 	const char *deliminator  = " \t\r\n\a";
 	int bufsize = 20;
+	int newbuf;
 
 	tokens = malloc(sizeof(char*) * bufsize);
 	if (!tokens)
@@ -31,16 +32,13 @@ char **tokenize(char *str)
 		i++;
 		if (i >= bufsize)
 		{
-			bufsize += 5;
-			tokens = _realloc(tokens, bufsize * sizeof(char*));
+			newbuf = bufsize + 5;;
+			tokens = _realloc(tokens, bufsize * sizeof(char*), newbuf * sizeof(char*));
 			if (!tokens)
 				return (NULL);
 		}
 		token = strtok(NULL, deliminator);
-		if (!token)
-			return (NULL);
 	}
-
 	return (tokens);
 }
 
