@@ -10,6 +10,7 @@ char **tokenize(char *str)
 	char *token;
 	int i;
 	const char *deliminator  = " \t\r\n\a";
+	/* tab, enter, newline, bell sound */
 	int bufsize = 20;
 	int newbuf;
 
