@@ -5,7 +5,7 @@
   *
   *
   */
-int main (void)
+int main (int argc, char **argv, char **env)
 {
 	looper();
 	return (0);

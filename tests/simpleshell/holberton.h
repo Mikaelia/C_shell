@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+void looper(void);
 char *_prompt(void);
 char **tokenize(char* str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
