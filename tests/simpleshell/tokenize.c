@@ -32,7 +32,7 @@ char **tokenize(char *str)
 		i++;
 		if (i >= bufsize)
 		{
-			newbuf = bufsize + 5;;
+			newbuf = bufsize + 5;
 			tokens = _realloc(tokens, bufsize * sizeof(char*), newbuf * sizeof(char*));
 			if (!tokens)
 				return (NULL);
