@@ -11,26 +11,27 @@ int launch(char **argv)
     	pid_t child_pid;
 	int i = 0;
 
-	child_pid = fork();
-	if (child_pid == -1)
+	do
 	{
-		perror("Error:");
-	}
-	if (child_pid == 0)
-	{
-		if (execve(argv[0], argv, NULL) == -1)
+		child_pid = fork();
+		if (child_pid == -1)
 		{
-			perror("FAIL");
+			perror("Error:");
+		 }
+		if (child_pid == 0)
+		{
+			if (execve(argv[0], argv, NULL) == -1)
+			{
+				perror("FAIL");
+			}
 			exit(0);
 		}
-	}
-	else
-	{
-		do
+		else
 		{
 			child_pid = wait(NULL);
-			i++;
-		}while (argv[i] != NULL);
-	}
+		}
+		i++;
+	} while (argv != NULL);
+
 	return (1);
 }

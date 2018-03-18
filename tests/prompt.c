@@ -4,16 +4,15 @@
   *
   *
   */
-int _prompt(void)
+char *_prompt(void)
 {
   char *line = NULL;
+  int s;
   size_t bufsize = 0;
 
   printf("$ ");
-  while (getline(&line, &bufsize, stdin) != -1)
-  {
-	printf("%s", line);
-  }
-  free(line);
-  return 0;
+  s = getline(&line, &bufsize, stdin); /*stores address of buffer containing args*/
+  if (s == -1)
+	  perror("ERROR");
+  return (line);
 }

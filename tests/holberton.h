@@ -4,7 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-int _prompt(void);
-char **tokenize(char *str);
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+char *_prompt(void);
+char **tokenize(char* str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
+int launch(char **tokens);
 #endif

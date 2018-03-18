@@ -1,33 +1,35 @@
 #include "holberton.h"
 /**
-  * tokenize - parses input line into tokens
+  * pathsplit - splits path into tokens
   *
   * Return: Array of each word of string
   */
-char **tokenize(char *str)
+char **pathsplit(char *path)
 {
-	char **tokens;
-	char *token;
+	char **patharray;
+	char *pathtoken;
+	const char *deliminator  = ":";
 	int i;
-	const char *deliminator  = " \t\r\n\a";
-	/* tab, enter, newline, bell sound */
-	int bufsize = 20;
+	int bufsize;
 	int newbuf;
 
-	tokens = malloc(sizeof(char*) * bufsize);
-	if (!tokens)
+	bufsize = 1;
+	if (!path)
 	{
-	    fprintf(stderr, "allocation error\n");
-	    return (NULL);
+		perror("Null input string");
+		return (NULL);
 	}
+	while (i = 0, path[i] != '\0', i++)
+	{
+		if (path[i] == deliminator[0])
+			bufsize++;
 
-	token = strtok(str, deliminator);
-	if (!token)
+	pathtoken = strtok(path, deliminator);
+	if (!pathtoken)
 	{
 		return (NULL);
 	}
-	i = 0;
-	while (token != NULL)
+	while (pathtoken != NULL)
 	{
 		tokens[i] = token;
 		i++;
