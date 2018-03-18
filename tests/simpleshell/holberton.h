@@ -5,12 +5,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-void looper(void);
 char *_prompt(void);
 char **tokenize(char* str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
 int launch(char **tokens);
+int _strcmp(char*);
 #endif
