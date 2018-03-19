@@ -14,4 +14,5 @@ void *_realloc(void *ptr, unsigned int, unsigned int);
 int launch(char **tokens);
 char* _strcmp(char*);
 char *findpath();
+char **pathsplit(char*);
 #endif
