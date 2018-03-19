@@ -5,21 +5,23 @@
   *
   * Return: Pointer to path variable string, or NULL pointer on fail
   */
-char *findpath(char **env)
+char *findpath()
 {
 	char *pathvar;
 	int i;
-	int findmatch;
+	char *findmatch;
+
+	extern char **environ;
 
 	pathvar = NULL;
 	i = 0;
 
-	while (env[i] != NULL)
+	while (environ[i] != NULL)
 	{
-		findmatch = _strcmp(env[i]);
-		if (findmatch == 1)
+		findmatch = _strcmp(environ[i]);
+		if (findmatch)
 		{
-			pathvar = env[i];
+			pathvar = findmatch;
 			break;
 		}
 		else
