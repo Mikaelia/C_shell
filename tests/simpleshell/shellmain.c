@@ -7,9 +7,6 @@
   */
 int main (int argc, char **argv, char **env)
 {
-	char *input;
-	char *pathvar;
-	char **tokens;
-
+	looper(env);
 	return (0);
 }
