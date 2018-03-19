@@ -12,6 +12,8 @@ void looper(char **env)
 	char *pathvar;
 	char **tokens;
 	int status;
+
+	status = 0;
 	do
 	{
 		input = _prompt();		/*gets input stream*/

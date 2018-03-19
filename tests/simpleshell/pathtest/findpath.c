@@ -9,18 +9,19 @@ char *findpath(char **env)
 {
 	char *pathvar;
 	int i;
+	int findmatch;
 
 	pathvar = NULL;
 	i = 0;
 
-	if (env == NULL)
-	{
-		return(NULL);
-	}
 	while (env[i] != NULL)
 	{
-		if (_strcmp(env[i]) > 0)
+		findmatch = _strcmp(env[i]);
+		if (findmatch == 1)
+		{
 			pathvar = env[i];
+			break;
+		}
 		else
 			i++;
 	}
