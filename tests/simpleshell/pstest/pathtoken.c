@@ -9,23 +9,19 @@ char **pathsplit(char *path)
 	char **patharray;
 	char *pathtoken;
 	const char *deliminator  = ":";
-	int i, j;
+	int i;
 	int bufsize;
 
-	bufsize = 2;
-	i = 0;
-	j = 0;
-
+	bufsize = 1;
 	if (!path)
 	{
 		perror("Null input string");
 		return (NULL);
 	}
-	while (path[i] != '\0')					/*counting ':' to determine needed bufsize*/
+	while (i = 0, path[i] != '\0', i++)			/*counting ':' to determine needed bufsize*/
 	{
 		if (path[i] == deliminator[0])
 			bufsize++;
-		i++;
 	}
 	patharray = malloc(sizeof(char*) * bufsize);		/*allocate space for new array of pointers*/
 	if (patharray == NULL)
@@ -42,10 +38,10 @@ char **pathsplit(char *path)
 	}
 	while (pathtoken != NULL)				/*strtok will return NULL at end of string*/
 	{
-		patharray[j] = pathtoken;			/*filling new buff with tokens*/
+		patharray[i] = pathtoken;			/*filling new buff with tokens*/
 		pathtoken = strtok(NULL, deliminator);
-		j++;
+		i++;
 	}
-	patharray[j] = '\0';
+	patharray[i] = '\0';
 	return (patharray);
 }
