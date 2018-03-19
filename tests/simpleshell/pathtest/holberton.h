@@ -12,6 +12,6 @@ char *_prompt(void);
 char **tokenize(char* str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
 int launch(char **tokens);
-int _strcmp(char*);
+char* _strcmp(char*);
 char *findpath();
 #endif

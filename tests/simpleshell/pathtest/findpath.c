@@ -9,7 +9,7 @@ char *findpath()
 {
 	char *pathvar;
 	int i;
-	int findmatch;
+	char *findmatch;
 
 	extern char **environ;
 
@@ -19,9 +19,9 @@ char *findpath()
 	while (environ[i] != NULL)
 	{
 		findmatch = _strcmp(environ[i]);
-		if (findmatch == 1)
+		if (findmatch)
 		{
-			pathvar = environ[i];
+			pathvar = findmatch;
 			break;
 		}
 		else
