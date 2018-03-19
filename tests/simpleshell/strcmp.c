@@ -1,29 +1,25 @@
 #include "holberton.h"
 /**
- * _strcmp - compares two strings
+ * _strcmp - searches env variable strings for PATH variable
+ * @envar: environmental variable string to compare
  *
- * @s1: first string to compare
- * @s2: second string to compare
- *
- *
- * Return: 1 on match
- *
+ * Return: 1 on match, -1 if no match found
  */
 int _strcmp(char *envar)
 {
-	char *var = "PATH=";
+	char *path = "PATH=";
 
 	if (envar == NULL)
 	{
 		perror("NULL ARGUMENT");
 		exit (2);
 	}
-	while (*envar != '\0' && *var != '\0' && *envar == *var)
+	while (*envar != '\0' && *path != '\0' && *envar == *path)
 	{
 		envar++;
-		var++;
+		path++;
 	}
-	if (*var != '\0')
+	if (*path != '\0')
 	{
 		return (-1);
 	}
