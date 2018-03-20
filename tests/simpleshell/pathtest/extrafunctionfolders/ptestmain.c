@@ -8,11 +8,11 @@
 int main (void)
 {
 	char *pathvar;
-	char **patharray;
+	tokenlist_t *patharray;
 	int i;
 
 	pathvar = findpath();	/*finds PATH string*/
-	patharray = pathsplit(pathvar);
+	patharray = pathsplitlist(pathvar);
 	i = 0;
 	while (patharray[i] != '\0')
 	{

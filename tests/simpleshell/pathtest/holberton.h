@@ -22,4 +22,5 @@ typedef struct tokenlist_t
 } tokenlist_t;
 tokenlist_t *tokentolist(tokenlist_t **head, char *token);
 tokenlist_t *pathsplitlist(char *path);
+void freelist(tokenlist_t **head);
 #endif

@@ -40,13 +40,12 @@ tokenlist_t *pathsplitlist(char *path)
 {
 	char *pathtoken;
 	const char *deliminator  = ":";
-	int i, j;
+	int i;
 	int bufsize;
 	tokenlist_t *pathhead;
 
 	bufsize = 2;
 	i = 0;
-	j = 0;
 	pathhead = NULL;
 
 	if (!path)
@@ -70,7 +69,6 @@ tokenlist_t *pathsplitlist(char *path)
 	{
 		tokentolist(&pathhead, pathtoken);
 		pathtoken = strtok(NULL, deliminator);
-		j++;
 	}
 	return (pathhead);
 }
