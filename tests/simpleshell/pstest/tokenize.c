@@ -38,6 +38,12 @@ char **tokenize(char *str)
 			if (!tokens)
 				return (NULL);
 		}
+		token = strtok(NULL, deliminator);
+		if (!token)
+		{
+			perror("TOKEN FAIL");
+			return (NULL);
+		}
 	}
 	tokens[i] = '\0';
 	return (tokens);

@@ -14,4 +14,15 @@ void *_realloc(void *ptr, unsigned int, unsigned int);
 int launch(char **tokens);
 char* _strcmp(char*);
 char *findpath();
+char **pathsplit(char*);
+int _strlen;
+typedef struct tokenlist_t
+{
+	char *token;
+	struct tokenlist_t *next;
+} tokenlist_t;
+tokenlist_t *tokentolist(tokenlist_t **head, char *token);
+tokenlist_t *pathsplitlist(char *path);
+void freelist(tokenlist_t **head);
+char *appendcmd(const tokenlist_t *head, char *command)
 #endif
