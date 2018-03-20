@@ -1,16 +1,15 @@
 #include "holberton.h"
-void freelist(tokenlist_t **head)
+void freelist(tokenlist_t *head)
 {
-	tokenlist_t *ptr;
+	tokenlist_t *tmp;
 
 	if (head == NULL)
 		return;
 
-	while (*head != NULL)
+	while (head != NULL)
 	{
-		ptr = *head;
-		*head = (*head)->next;
-		free(ptr);
+		tmp = head;
+		head = head->next;
+		free(tmp);
 	}
-	head = NULL;
 }

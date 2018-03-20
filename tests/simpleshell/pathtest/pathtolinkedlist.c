@@ -32,9 +32,10 @@ tokenlist_t *tokentolist(tokenlist_t **head, char *token)
 	return (new);
 }
 /**
-  * pathsplit - splits path into tokens
+  * pathsplit - splits path string into tokens, returns linked list
+  * @path: path variable string
   *
-  * Return: Array of each word of string
+  * Return: pointer to list head, or NULL on fail
   */
 tokenlist_t *pathsplitlist(char *path)
 {
@@ -42,15 +43,15 @@ tokenlist_t *pathsplitlist(char *path)
 	const char *deliminator  = ":";
 	int i;
 	int bufsize;
-	tokenlist_t *pathhead;
+	tokenlist_t *path_head;
 
-	bufsize = 2;
+	bufsize = 2; /*accounts for null*/
 	i = 0;
-	pathhead = NULL;
+	path_head = NULL;
 
 	if (!path)
 	{
-		perror("Null input string");
+		printf("NULL PATH STRING");
 		return (NULL);
 	}
 	while (path[i] != '\0')
@@ -67,8 +68,8 @@ tokenlist_t *pathsplitlist(char *path)
 	}
 	while (pathtoken != NULL)
 	{
-		tokentolist(&pathhead, pathtoken);
+		tokentolist(&path_head, pathtoken);
 		pathtoken = strtok(NULL, deliminator);
 	}
-	return (pathhead);
+	return (path_head);
 }

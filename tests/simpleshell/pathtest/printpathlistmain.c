@@ -26,8 +26,9 @@ int main (void)
 	tokenlist_t *pathlist;
 
 	pathvar = findpath();	/*finds PATH string*/
-	pathlist = pathsplitlist(pathvar);
+	pathlist = pathsplitlist(pathvar); /*returns pointer to head*/
 	print_list(pathlist);
+	freelist(pathlist);
 
 	return (0);
 }
