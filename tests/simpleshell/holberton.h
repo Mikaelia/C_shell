@@ -20,7 +20,7 @@ void *_realloc(void *ptr, unsigned int, unsigned int);
 int launch(char **tokens);
 char *checkpath(char *command);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
-char *_strcmp(char*);
+char *_strcmp_path(char*);
 char *findpath();
 char **pathsplit(char*);
 int _strlen(char *);
