@@ -1,6 +1,7 @@
 #include "holberton.h"
 /**
   * tokenize - parses input line into tokens
+  * @str: str is our string we will be separating into tokens
   *
   * Return: Array of each word of string
   */
@@ -13,11 +14,11 @@ char **tokenize(char *str)
 	int bufsize = 20;
 	int newbuf;
 
-	tokens = malloc(sizeof(char*) * bufsize);
+	tokens = malloc(sizeof(char *) * bufsize);
 	if (!tokens)
 	{
-	    fprintf(stderr, "allocation error\n");
-	    return (NULL);
+		fprintf(stderr, "allocation error\n");
+		return (NULL);
 	}
 
 	token = strtok(str, deliminator);
@@ -32,8 +33,9 @@ char **tokenize(char *str)
 		i++;
 		if (i >= bufsize)
 		{
-			newbuf = bufsize + 5;;
-			tokens = _realloc(tokens, bufsize * sizeof(char*), newbuf * sizeof(char*));
+			newbuf = bufsize + 5;
+			tokens = _realloc(tokens, bufsize * sizeof(char*),
+					  newbuf * sizeof(char*));
 			if (!tokens)
 				return (NULL);
 		}

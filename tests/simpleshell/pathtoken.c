@@ -1,6 +1,7 @@
 #include "holberton.h"
 /**
   * pathsplit - splits path into tokens
+  * @path: path is an enviromental variable
   *
   * Return: Array of each word of string
   */
@@ -35,7 +36,7 @@ char **pathsplit(char *path)
 		i++;
 		if (i >= bufsize)
 		{
-			newbuf = bufsize + 5;;
+			newbuf = bufsize + 5;
 			tokens = _realloc(tokens, bufsize * sizeof(char*), newbuf * sizeof(char*));
 			if (!tokens)
 				return (NULL);
