@@ -65,7 +65,6 @@ void escape(char **argv)
 		}
 
 		else
-			perror("default exit")
 			exit(100);
 	}
 }
