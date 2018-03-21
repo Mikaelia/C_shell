@@ -37,7 +37,8 @@ char **pathsplit(char *path)
 		if (i >= bufsize)
 		{
 			newbuf = bufsize + 5;
-			tokens = _realloc(tokens, bufsize * sizeof(char*), newbuf * sizeof(char*));
+			tokens = _realloc(tokens, bufsize * sizeof(char*),
+					  newbuf * sizeof(char*));
 			if (!tokens)
 				return (NULL);
 		}
