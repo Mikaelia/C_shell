@@ -72,19 +72,19 @@ char **tokenize(char *str)
 		perror("TOKEN FAIL");
 		return (NULL);
 	}
+	i = 0;
 	while (token != NULL)
 	{
+		tokens[i] = token;
+		i++;
+		if (i >= bufsize)
 		{
 			newbuf = bufsize + 5;
-<<<<<<< HEAD
-			tokens = _realloc(tokens, bufsize * sizeof(char*),
-					  newbuf * sizeof(char*));
-=======
 			tokens = _realloc(tokens, bufsize * sizeof(char*), newbuf * sizeof(char*));
->>>>>>> 69f9a6007a3f58427b181c249b1a7e042c79cada
 			if (!tokens)
 				return (NULL);
 		}
+		token = strtok(NULL, deliminator);
 	}
 	tokens[i] = '\0';
 	return (tokens);
