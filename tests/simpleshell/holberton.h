@@ -29,4 +29,6 @@ tokenlist_t *pathsplitlist(char *path);
 void freelist(tokenlist_t *head);
 int statcommand(char *exec);
 void escape(char **argv);
+int _strcmp(char *s1, char *s2);
+int printenviron(char **argv);
 #endif
