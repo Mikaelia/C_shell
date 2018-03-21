@@ -30,14 +30,14 @@ int _strlen(char *string)
   *
   * Return: pointer to newly allocated space w data
   */
-char *appendcmd(const tokenlist_t *head, char *command)
+char *appendcmd(const tokenlist_t *h, char *command)
 {
-
-	while (head != NULL)
-	{
 		char *token;
 		char *new;
 		int sum, i, j;
+
+	while (h != NULL)
+	{
 
 		sum = 0;
 		i = 0;
@@ -50,7 +50,7 @@ char *appendcmd(const tokenlist_t *head, char *command)
 		new = malloc(sizeof(char) * sum);
 		if (new == NULL)
 		{
-			return (NULL)
+			return (NULL);
 		}
 		while (token[i] != '\0')
 		{
@@ -64,8 +64,6 @@ char *appendcmd(const tokenlist_t *head, char *command)
 			j++;
 		}
 		new[i] = '\0';
-		/*STAT HERE*/
-		/* if found, return. Else... */
 
 		h = h->next;
 	}

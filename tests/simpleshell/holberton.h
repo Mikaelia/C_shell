@@ -13,13 +13,13 @@ typedef struct tokenlist_t
 	char *token;
 	struct tokenlist_t *next;
 } tokenlist_t;
-void looper(char**);
+void looper();
 char *_prompt(void);
 char **tokenize(char* str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
 int launch(char **tokens);
 char *checkpath(char *command);
-char *appendcmd(tokenlist_t *pathlist, char *arg);
+char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *_strcmp(char*);
 char *findpath();
 char **pathsplit(char*);

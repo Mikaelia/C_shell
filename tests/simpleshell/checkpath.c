@@ -26,6 +26,7 @@ char *checkpath(char *command)
 	if (stat(executable, &st) < 0)
 	{
 		printf("Stat Fail");
+		freelist(pathlist);
 		return (NULL);
 	}
 
