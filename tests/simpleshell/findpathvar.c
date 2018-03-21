@@ -18,7 +18,7 @@ char *findpath()
 
 	while (environ[i] != NULL)
 	{
-		findmatch = _strcmp(environ[i]);
+		findmatch = _strcmp_path(environ[i]);
 		if (findmatch)
 		{
 			pathvar = findmatch;
