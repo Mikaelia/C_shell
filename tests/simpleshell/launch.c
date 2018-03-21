@@ -21,7 +21,7 @@ int launch(char **argv)
 	{
 		if (execve(argv[0], argv, NULL) == -1)
 		{
-			executable = checkpath(); /*return NULL on fail*/
+			executable = checkpath(argv[0]); /*return NULL on fail*/
 			if (executable == NULL)
 			{
 				printf("NO PATH MATCH");
