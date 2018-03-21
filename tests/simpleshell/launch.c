@@ -19,6 +19,7 @@ int launch(char **argv)
 	}
 	if (child_pid == 0)
 	{
+		escape(argv); /* exit */
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			executable = checkpath(); /*return NULL on fail*/
@@ -36,6 +37,7 @@ int launch(char **argv)
 	}
 	else
 	{
+		escape(argv); /* exit */
 		do
 		{
 			child_pid = wait(NULL);
