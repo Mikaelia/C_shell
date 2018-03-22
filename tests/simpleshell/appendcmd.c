@@ -1,8 +1,7 @@
 #include "holberton.h"
 /**
   * _strlen - finds length of string
-  *
-  *
+  * @string: input string
   * Return: int length, or 0 on error/empty
   */
 int _strlen(char *string)
@@ -26,8 +25,7 @@ int _strlen(char *string)
 /**
   * appendcmd - creates new buf to hold nodeval + user input
   * @command: first argument passed to input stream
-  * @head: linked list head
-  *
+  * @h: linked list head
   * Return: pointer to newly allocated space w data
   */
 char *appendcmd(const tokenlist_t *h, char *command)
