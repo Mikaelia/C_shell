@@ -1,7 +1,6 @@
 #include "holberton.h"
 /**
   * findpath - finds the path variable in environmental variable array
-  * @env: environmental variable array
   *
   * Return: Pointer to path variable string, or NULL pointer on fail
   */
