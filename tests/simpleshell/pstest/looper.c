@@ -6,9 +6,10 @@
   *
   *
   */
-void looper()
+void looper(char **env)
 {
 	char *input;
+	char *pathvar;
 	char **tokens;
 	int status;
 
@@ -16,6 +17,7 @@ void looper()
 	do
 	{
 		input = _prompt();		/*gets input stream*/
+		pathvar = findpath(env);	/*finds PATH value*/
 		tokens = tokenize(input);	/*splits input into tokens*/
 		status = launch(tokens);	/*executes tokens*/
 

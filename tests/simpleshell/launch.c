@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
-  * launch - forks process and executes program in 5 children
+  * launch - forks process and executes commands
   *
   *
   *
@@ -9,6 +9,7 @@
 int launch(char **argv)
 {
     	pid_t child_pid;
+	char* executable;
 	int i = 0;
 
 	child_pid = fork();
@@ -18,14 +19,27 @@ int launch(char **argv)
 	}
 	if (child_pid == 0)
 	{
+		if (printenviron(argv) == 1)
+			exit(101); /*exit child process*/
+		escape(argv); /* exit */
 		if (execve(argv[0], argv, NULL) == -1)
 		{
-			perror("FAIL");
-			exit(0);
+			executable = checkpath(argv[0]); /*return NULL on fail*/
+			if (executable == NULL)
+			{
+				printf("NO PATH MATCH");
+				exit(0);
+			}
+			if (execve(executable, argv, NULL) == -1)
+			{
+				printf("EXECUTE FAIL");
+				exit(0);
+			}
 		}
 	}
 	else
 	{
+		escape(argv); /* exit */
 		do
 		{
 			child_pid = wait(NULL);
