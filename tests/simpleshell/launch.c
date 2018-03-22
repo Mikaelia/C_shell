@@ -10,18 +10,19 @@ int launch(char **argv)
 {
     	pid_t child_pid;
 	char* executable;
-	int i = 0;
+	int i;
+
+	executable = NULL;
+	i = 0;
 
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		perror("Error:");
+		printf("Error:");
+		exit(1);
 	}
 	if (child_pid == 0)
 	{
-		/*if (printenviron(argv) == 1)
-			exit(101); exit child process
-		escape(argv); */
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			executable = checkpath(argv[0]); /*return NULL on fail*/

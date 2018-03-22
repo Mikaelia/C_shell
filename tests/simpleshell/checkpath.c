@@ -1,4 +1,5 @@
 #include "holberton.h"
+
 /**
   * checkpath - checks path for executable
   *
@@ -21,14 +22,16 @@ char *checkpath(char *command)
 
 	pathvar = findpath();
 	pathlist = pathsplitlist(pathvar);
-	executable = appendcmd(pathlist, command);
-
-	if (stat(executable, &st) < 0)
+	while (pathlist)
 	{
-		printf("Stat Fail");
-		freelist(pathlist);
-		return (NULL);
+		executable = appendcmd(pathlist, command);
+		if (stat(executable, &st) < 0)
+		{
+			pathlist = pathlist->next;
+		}
+		else if (stat(executable, &st) == 0)
+			return (executable);
 	}
-
-	return (executable);
+	printf("No match found");
+	exit(90);
 }

@@ -15,7 +15,7 @@ void print_list(const tokenlist_t *h)
 	}
 }
 /**
-  * main - main function for simple shell
+  * main - turns path to link list and prints
   *
   *
   *

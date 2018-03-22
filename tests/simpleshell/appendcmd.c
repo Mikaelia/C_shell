@@ -32,40 +32,36 @@ int _strlen(char *string)
   */
 char *appendcmd(const tokenlist_t *h, char *command)
 {
-		char *token;
-		char *new;
-		int sum, i, j;
+	char *token;
+	char *new;
+	int sum, i, j;
 
-	while (h != NULL)
+	sum = 0;
+	i = 0;
+	j = 0;
+	token = h->token;
+
+	sum += strlen(token);
+	sum += strlen(command);
+
+	new = malloc(sizeof(char) * sum);
+	if (new == NULL)
 	{
-
-		sum = 0;
-		i = 0;
-		j = 0;
-		token = h->token;
-
-		sum += strlen(token);
-		sum += strlen(command);
-
-		new = malloc(sizeof(char) * sum);
-		if (new == NULL)
-		{
-			return (NULL);
-		}
-		while (token[i] != '\0')
-		{
-			new[i] = token[i];
-			i++;
-		}
-		while (command[j] != '\0')
-		{
-			new[i] = command[j];
-			i++;
-			j++;
-		}
-		new[i] = '\0';
-
-		h = h->next;
+		return (NULL);
 	}
+	while (token[i] != '\0')
+	{
+		new[i] = token[i];
+		i++;
+	}
+	new[i] = '/';
+	i++;
+	while (command[j] != '\0')
+	{
+		new[i] = command[j];
+		i++;
+		j++;
+	}
+	new[i] = '\0';
 	return (new);
 }
