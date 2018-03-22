@@ -5,7 +5,7 @@
  *
  * Return: 1 on match, -1 if no match found
  */
-char* _strcmp(char *envar)
+char *_strcmp(char *envar)
 {
 	char *path = "PATH=";
 
@@ -27,7 +27,6 @@ char* _strcmp(char *envar)
 }
 /**
   * findpath - finds the path variable in environmental variable array
-  * @env: environmental variable array
   *
   * Return: Pointer to path variable string, or NULL pointer on fail
   */
@@ -36,8 +35,6 @@ char *findpath()
 	char *pathvar;
 	int i;
 	char *findmatch;
-
-	extern char **environ;
 
 	pathvar = NULL;
 	i = 0;
