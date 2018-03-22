@@ -19,9 +19,9 @@ int launch(char **argv)
 	}
 	if (child_pid == 0)
 	{
-		if (printenviron(argv) == 1)
-			exit(101); /*exit child process*/
-		escape(argv); /* exit */
+		/*if (printenviron(argv) == 1)
+			exit(101); exit child process
+		escape(argv); */
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			executable = checkpath(argv[0]); /*return NULL on fail*/
@@ -39,7 +39,6 @@ int launch(char **argv)
 	}
 	else
 	{
-		escape(argv); /* exit */
 		do
 		{
 			child_pid = wait(NULL);
