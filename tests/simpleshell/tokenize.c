@@ -69,8 +69,8 @@ char **tokenize(char *str)
 	token = strtok(str, deliminator);
 	if (!token)
 	{
-		perror("TOKEN FAIL");
-		return (NULL);
+		printf("\n");
+		exit(98);
 	}
 	i = 0;
 	while (token != NULL)

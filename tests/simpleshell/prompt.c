@@ -13,6 +13,8 @@ char *_prompt(void)
 	printf("$ ");
 	s = getline(&line, &bufsize, stdin); /*stores address of buffer w args*/
 	if (s == -1)
-		printf("ERROR");
+	{
+		return (NULL);
+	}
 	return (line);
 }
