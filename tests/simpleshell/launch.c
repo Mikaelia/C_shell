@@ -1,15 +1,14 @@
 #include "holberton.h"
 /**
   * launch - forks process and executes commands
-  *
-  *
+  * @argv: arg passed from stdin
   *
   * Return: 0
  */
 int launch(char **argv)
 {
-    	pid_t child_pid;
-	char* executable;
+	pid_t child_pid;
+	char *executable;
 	int i;
 
 	executable = NULL;
@@ -40,11 +39,10 @@ int launch(char **argv)
 	}
 	else
 	{
-		do
-		{
+		do {
 			child_pid = wait(NULL);
 			i++;
-		}while (argv[i] != NULL);
+		} while (argv[i] != NULL);
 	}
 	return (1);
 }

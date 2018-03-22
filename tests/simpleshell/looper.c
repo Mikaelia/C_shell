@@ -6,15 +6,14 @@
   *
   *
   */
-void looper()
+void looper(void)
 {
 	char *input;
 	char **tokens;
 	int status;
 
 	status = 0;
-	do
-	{
+	do {
 		input = _prompt();		/*gets input stream*/
 		tokens = tokenize(input);	/*splits input into tokens*/
 		status = launch(tokens);	/*executes tokens*/

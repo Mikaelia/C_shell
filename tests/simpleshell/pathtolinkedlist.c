@@ -32,7 +32,7 @@ tokenlist_t *tokentolist(tokenlist_t **head, char *token)
 	return (new);
 }
 /**
-  * pathsplit - splits path string into tokens, returns linked list
+  * pathsplitlist - splits path string into tokens, returns linked list
   * @path: path variable string
   *
   * Return: pointer to list head, or NULL on fail
