@@ -1,9 +1,7 @@
 #include "holberton.h"
 /**
   * checkpath - checks path for executable
-  *
-  *
-  *
+  * @command: input command string
   * Return: NULL if no match found, or executable file if founc
   */
 char *checkpath(char *command)
