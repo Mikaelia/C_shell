@@ -10,7 +10,7 @@ int printenviron(char **argv)
 	int i = 0;
 	extern char **environ;
 
-	if (_strcmp(argv[0], "env") == 0)
+	if (_strcmp2(argv[0], "env") == 0)
 	{
 		while(environ[i] != NULL)
 		{
