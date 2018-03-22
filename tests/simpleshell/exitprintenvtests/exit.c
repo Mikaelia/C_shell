@@ -1,12 +1,10 @@
 #include "holberton.h"
-
 /**
  * _strcmp2 - compares two strings
- *
  * @s1: string 1
  * @s2: string 2
  *
- * Return: s1 - s2 or 0
+ * Return: 0 if match found, 
  */
 
 int _strcmp2(char *s1, char *s2)
@@ -14,7 +12,7 @@ int _strcmp2(char *s1, char *s2)
 	while (*s1 != '\0' || *s2 != '\0')
 	{
 		if (*s1 != *s2)
-			return (*s1 - *s2);
+			return (-1);
 		s1++;
 		s2++;
 	}
@@ -25,13 +23,12 @@ int _strcmp2(char *s1, char *s2)
  * @s: input string
  * Return: sum or -1
  */
-
-void _atoi(char *s)
+int _atoi(char *s)
 {
 	int sum = 0;
 
 	if (s == NULL)
-		return (-1);
+		return(-1);
 
 	while (*s != '\0')
 	{
@@ -45,7 +42,6 @@ void _atoi(char *s)
 			return (-1);
 	}
 	return (sum);
-
 }
 /**
  * escape - built in exit function
@@ -54,7 +50,7 @@ void _atoi(char *s)
 
 void escape(char **argv)
 {
-	int i; /* converting string to a int */
+	int i;
 
 	if (_strcmp2(argv[0], "exit") == 0)
 	{
@@ -63,8 +59,9 @@ void escape(char **argv)
 		{
 			exit(i);
 		}
-
 		else
 			exit(100);
 	}
+	else
+		
 }

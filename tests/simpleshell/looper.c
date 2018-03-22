@@ -21,6 +21,8 @@ void looper(void)
 		if (!tokens)
 			status = -1;
 		status = launch(tokens);	/*executes tokens*/
+		if (status != 1)
+			status = -1;
 
 		free(input);
 		free(tokens);
