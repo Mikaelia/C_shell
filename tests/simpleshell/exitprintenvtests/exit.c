@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * _strcmp - compares two strings
+ * _strcmp2 - compares two strings
  *
  * @s1: string 1
  * @s2: string 2
@@ -9,7 +9,7 @@
  * Return: s1 - s2 or 0
  */
 
-int _strcmp(char *s1, char *s2)
+int _strcmp2(char *s1, char *s2)
 {
 	while (*s1 != '\0' || *s2 != '\0')
 	{
@@ -56,7 +56,7 @@ void escape(char **argv)
 {
 	int i; /* converting string to a int */
 
-	if (_strcmp(argv[0], "exit") == 0)
+	if (_strcmp2(argv[0], "exit") == 0)
 	{
 		i = _atoi(argv[1]);
 		if (i > 0)
