@@ -17,8 +17,8 @@ int printenviron(char **argv)
 			write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
 			i++;
 		}
-		Return (1);
+		return (1);
 	}
 	else
-		Return (0);
+		return (0);
 }
