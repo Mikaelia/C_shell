@@ -33,7 +33,7 @@ void _atoi(char *s)
 	if (s == NULL)
 		return (-1);
 
-	while(*s != '\0')
+	while (*s != '\0')
 	{
 		if (*s >= '0' && *s <= '9')
 		{
