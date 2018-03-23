@@ -41,21 +41,24 @@ int _atoi(char *s)
 		else
 			return (-1);
 	}
-	return (sum);
+	if (sum > 255)
+		return (-1);
+	else
+		return (sum);
 }
 /**
  * escape - built in exit function
  * @argv: argument variable
  */
 
-void escape(char **argv)
+void escape(char **token)
 {
 	int i;
 
-	if (_strcmp2(argv[0], "exit") == 0)
+	if (_strcmp2(token[0], "exit") == 0)
 	{
-		i = _atoi(argv[1]);
-		if (i > 0)
+		i = _atoi(token[1]);
+		if (i >= 0)
 		{
 			exit(i);
 		}
@@ -63,5 +66,5 @@ void escape(char **argv)
 			exit(100);
 	}
 	else
-		
+		exit()
 }

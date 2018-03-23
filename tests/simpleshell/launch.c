@@ -5,7 +5,7 @@
   *
   * Return: 0
  */
-int launch(char **argv)
+int launch(char **tokens)
 {
 	pid_t child_pid;
 	char *executable;
@@ -22,17 +22,12 @@ int launch(char **argv)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(argv[0], argv, NULL) == -1)
+		if (execve(tokens[0], argv, NULL) == -1)
 		{
-			executable = checkpath(argv[0]); /*return NULL on fail*/
-			if (executable == NULL)
-			{
-				printf("NO PATH MATCH");
-				exit(0);
-			}
+			executable = checkpath(tokens[0]); /*return NULL on fail*/
 			if (execve(executable, argv, NULL) == -1)
 			{
-				printf("EXECUTE FAIL");
+				printerror;
 				exit(0);
 			}
 		}
@@ -42,7 +37,7 @@ int launch(char **argv)
 		do {
 			child_pid = wait(NULL);
 			i++;
-		} while (argv[i] != NULL);
+		} while (tokens[i] != NULL);
 	}
 	return (1);
 }
