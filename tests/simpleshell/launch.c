@@ -10,9 +10,11 @@ int launch(char **tokens)
 	pid_t child_pid;
 	char *executable;
 	int i;
+	static int comcount;
 
 	executable = NULL;
 	i = 0;
+	comcount = 0;
 
 	child_pid = fork();
 	if (child_pid == -1)
@@ -22,14 +24,15 @@ int launch(char **tokens)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(tokens[0], argv, NULL) == -1)
+		if (execve(tokens[0], tokens, NULL) == -1)
 		{
 			executable = checkpath(tokens[0]); /*return NULL on fail*/
-			if (execve(executable, argv, NULL) == -1)
+			if (execve(executable, tokens, NULL) == -1)
 			{
-				printerror;
+				/* printerror; */
 				exit(0);
 			}
+
 		}
 	}
 	else
@@ -37,7 +40,9 @@ int launch(char **tokens)
 		do {
 			child_pid = wait(NULL);
 			i++;
+			comcount++;
 		} while (tokens[i] != NULL);
 	}
+	printf("%i", comcount);
 	return (1);
 }
