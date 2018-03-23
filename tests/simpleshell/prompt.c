@@ -2,17 +2,19 @@
 /**
   * _prompt - reads line for prompt
   *
-  *
+  * Return: buffer containing command line arguments
   */
 char *_prompt(void)
 {
-  char *line = NULL;
-  int s;
-  size_t bufsize = 0;
+	char *line = NULL;
+	int s;
+	size_t bufsize = 0;
 
-  printf("$ ");
-  s = getline(&line, &bufsize, stdin); /*stores address of buffer containing args*/
-  if (s == -1)
-	  perror("ERROR");
-  return (line);
+	printf("$ ");
+	s = getline(&line, &bufsize, stdin); /*stores address of buffer w args*/
+	if (s == -1)
+	{
+		return (NULL);
+	}
+	return (line);
 }

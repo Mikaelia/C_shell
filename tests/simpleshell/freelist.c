@@ -1,4 +1,10 @@
 #include "holberton.h"
+/**
+  * freelist - frees a linked list
+  * @head: head of linked list
+  *
+  * Return: void
+  */
 void freelist(tokenlist_t *head)
 {
 	tokenlist_t *tmp;
