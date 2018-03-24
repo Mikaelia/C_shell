@@ -1,11 +1,11 @@
 #include "holberton.h"
 /**
- * _strcmp - searches env variable strings for PATH name
+ * _findpath - searches env variable strings for PATH name
  * @envar: environmental variable string to compare
  *
  * Return: 1 on match, -1 if no match found
  */
-char *_strcmp(char *envar)
+char * _findpath(char *envar)
 {
 	char *path = "PATH=";
 
@@ -27,6 +27,7 @@ char *_strcmp(char *envar)
 }
 /**
   * findpath - finds the path variable in environmental variable array
+  * @env: environmental variable array
   *
   * Return: Pointer to path variable string, or NULL pointer on fail
   */
@@ -36,12 +37,14 @@ char *findpath()
 	int i;
 	char *findmatch;
 
+	extern char **environ;
+
 	pathvar = NULL;
 	i = 0;
 
 	while (environ[i] != NULL)
 	{
-		findmatch = _strcmp(environ[i]);
+		findmatch = _findpath(environ[i]);
 		if (findmatch)
 		{
 			pathvar = findmatch;

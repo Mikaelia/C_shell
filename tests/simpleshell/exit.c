@@ -43,10 +43,10 @@ int _atoi(char *s)
 	return (sum);
 }
 /**
- * _exit - built in exit function
+ * __exit - built in exit function
  * @tokens: arg list
  */
-int _exit(char **tokens)
+int __exit(char **tokens)
 {
 	int i;
 
@@ -60,6 +60,6 @@ int _exit(char **tokens)
 		else
 			exit(0);
 	}
-	perror("Error");
+	printf("Not the exit builtin");
 	return (-1);
 }
