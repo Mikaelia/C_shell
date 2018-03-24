@@ -39,6 +39,6 @@ int launch(char **av, char **tokens, char *line)
 	{
 		child_pid = wait(NULL);
 	}
-	printf("%i", comcount);
+	printf("%i", count);
 	return (1);
 }
