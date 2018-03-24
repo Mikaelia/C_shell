@@ -22,6 +22,11 @@ int launch(char **argv)
 	}
 	if (child_pid == 0)
 	{
+		if (printenviron(argv) == 1)
+		{
+			printf("inside success \n");
+			exit(0);
+		}
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			executable = checkpath(argv[0]); /*return NULL on fail*/
@@ -39,10 +44,7 @@ int launch(char **argv)
 	}
 	else
 	{
-		do {
-			child_pid = wait(NULL);
-			i++;
-		} while (argv[i] != NULL);
+		child_pid = wait(NULL);
 	}
 	return (1);
 }
