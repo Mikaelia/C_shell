@@ -6,13 +6,14 @@
   *
   *
   */
-void looper(void)
+void looper(char **av)
 {
 	char *input;
 	char **tokens;
 	int status;
 
 	status = 0;
+	printf("This is arv[0]%s\n", av[0]);
 	do {
 		input = _prompt();		/*gets input stream*/
 		if (input == NULL)
@@ -20,6 +21,7 @@ void looper(void)
 		tokens = tokenize(input);	/*splits input into tokens*/
 		if (!tokens)
 			status = -1;
+		printf("This is our first command%s:\n", tokens[0]);
 		status = launch(tokens);	/*executes tokens*/
 		if (status != 1)
 			status = -1;

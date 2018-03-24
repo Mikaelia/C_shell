@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -20,11 +21,11 @@ typedef struct tokenlist_t
 	struct tokenlist_t *next;
 } tokenlist_t;
 extern char **environ;
-void looper(void);
+void looper(char **argv);
 char *_prompt(void);
 char **tokenize(char *str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
-int launch(char **tokens);
+int launch(char **av char **tokens);
 char *checkpath(char *command);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *_strcmp(char *);
@@ -38,4 +39,5 @@ void freelist(tokenlist_t *head);
 int statcommand(char *exec);
 void escape(char **argv);
 int printenviron(char **argv);
+void printerror(char **, static int, char **);
 #endif
