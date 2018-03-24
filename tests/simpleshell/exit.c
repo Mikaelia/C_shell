@@ -60,6 +60,5 @@ int __exit(char **tokens)
 		else
 			exit(0);
 	}
-	printf("Not the exit builtin");
 	return (-1);
 }

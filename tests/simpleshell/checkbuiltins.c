@@ -7,9 +7,5 @@
   */
 int checkbuiltins(char **tokens)
 {
-	int num;
-
-	num = __exit(tokens);
-	printf("THIS IS MY EXIT BUILTIN%i", num);
-	return (-1);
+	return (__exit(tokens));
 }
