@@ -9,10 +9,8 @@ int launch(char **argv)
 {
 	pid_t child_pid;
 	char *executable;
-	int i;
 
 	executable = NULL;
-	i = 0;
 
 	child_pid = fork();
 	if (child_pid == -1)
@@ -22,11 +20,6 @@ int launch(char **argv)
 	}
 	if (child_pid == 0)
 	{
-		if (printenviron(argv) == 1)
-		{
-			printf("inside success \n");
-			exit(0);
-		}
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			executable = checkpath(argv[0]); /*return NULL on fail*/
