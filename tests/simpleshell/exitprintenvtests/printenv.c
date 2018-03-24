@@ -39,7 +39,7 @@ int printenviron(char **argv)
 			/*write(STDOUT_FILENO, environ[i], _strlen(environ[i])-1);
 			write(STDOUT_FILENO, "\n", 1);
 			i++;*/
-//			printf("%s\n", environ[i++]);
+			printf("%s\n", environ[i++]);
 		}
 		return (1);
 	}
