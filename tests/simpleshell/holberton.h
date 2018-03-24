@@ -20,7 +20,7 @@ typedef struct tokenlist_t
 	struct tokenlist_t *next;
 } tokenlist_t;
 extern char **environ;
-void looper(void);
+void looper(char **argv);
 char *_prompt(void);
 char **tokenize(char *str);
 void *_realloc(void *ptr, unsigned int, unsigned int);

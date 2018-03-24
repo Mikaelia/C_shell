@@ -23,39 +23,42 @@ int _strcmp2(char *s1, char *s2)
  * @s: input string
  * Return: sum or -1
  */
-int _atoi(char *s)
+int _atoi(char *exitinput)
 {
 	int sum = 0;
 
-	if (s == NULL)
+	if (exitinput == NULL)
 		return(-1);
 
-	while (*s != '\0')
+	while (*exitinput != '\0')
 	{
-		if (*s >= '0' && *s <= '9')
+		if (*exitinput >= '0' && *exitinput <= '9')
 		{
 			sum *= 10;
-			sum += (*s - '0');
-			s++;
+			sum += (*exitinput - '0');
+			exitinput++;
 		}
 		else
 			return (-1);
 	}
-	return (sum);
+	if (sum > 255)
+		return (-1);
+	else
+		return (sum);
 }
 /**
  * escape - built in exit function
  * @argv: argument variable
  */
 
-void escape(char **argv)
+void escape(char **token)
 {
 	int i;
 
-	if (_strcmp2(argv[0], "exit") == 0)
+	if (_strcmp2(token[0], "exit") == 0)
 	{
-		i = _atoi(argv[1]);
-		if (i > 0)
+		i = _atoi(token[1]);
+		if (i >= 0)
 		{
 			exit(i);
 		}
@@ -63,5 +66,5 @@ void escape(char **argv)
 			exit(100);
 	}
 	else
-		
+		exit()
 }

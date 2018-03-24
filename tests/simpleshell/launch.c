@@ -5,14 +5,16 @@
   *
   * Return: 0
  */
-int launch(char **argv)
+int launch(char **tokens)
 {
 	pid_t child_pid;
 	char *executable;
 	int i;
+	static int comcount;
 
 	executable = NULL;
 	i = 0;
+	comcount = 0;
 
 	child_pid = fork();
 	if (child_pid == -1)
@@ -22,29 +24,21 @@ int launch(char **argv)
 	}
 	if (child_pid == 0)
 	{
-		if (printenviron(argv) == 1)
+		if (execve(tokens[0], tokens, NULL) == -1)
 		{
-			printf("inside success \n");
-			exit(0);
-		}
-		if (execve(argv[0], argv, NULL) == -1)
-		{
-			executable = checkpath(argv[0]); /*return NULL on fail*/
-			if (executable == NULL)
+			executable = checkpath(tokens[0]); /*return NULL on fail*/
+			if (execve(executable, tokens, NULL) == -1)
 			{
-				printf("NO PATH MATCH");
+				/* printerror; */
 				exit(0);
 			}
-			if (execve(executable, argv, NULL) == -1)
-			{
-				printf("EXECUTE FAIL");
-				exit(0);
-			}
+
 		}
 	}
 	else
 	{
 		child_pid = wait(NULL);
 	}
+	printf("%i", comcount);
 	return (1);
 }
