@@ -30,6 +30,6 @@ char *checkpath(char *command)
 		else if (stat(executable, &st) == 0)
 			return (executable);
 	}
-	printf("No match found");
+	perror("Error: ");
 	exit(90);
 }

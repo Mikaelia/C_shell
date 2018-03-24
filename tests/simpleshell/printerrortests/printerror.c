@@ -1,4 +1,5 @@
-#include "holberton.h"
+#include <stdio.h>
+#include <unistd.h>
 /**
   * _strlen - finds length of string
   * @str - input string
@@ -17,14 +18,12 @@ int _strlen(char *str)
 	return (i);
 }
 
-void printerror(char **arg, static int arc, char *line) {
+void printerror(char **arg, char *arc, char *line) {
 char *buf;
-
-buf = arc
 
 	write(STDOUT_FILENO, arg[0], _strlen(arg[0]));
 	write(STDOUT_FILENO, ": ", sizeof(char) * 2);
-	write(STDOUT_FILENO, buf, _strlen(buf));
+	write(STDOUT_FILENO, "4", sizeof(char) * 2);
 	write(STDOUT_FILENO, ": ", sizeof(char) * 2);
 	write(STDOUT_FILENO, "command", sizeof(char) * 7);
 	write(STDOUT_FILENO, ": not found\n", sizeof(char) * 13);
