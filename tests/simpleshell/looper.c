@@ -6,7 +6,7 @@
   *
   *
   */
-void looper(void)
+void looper(char **av)
 {
 	char *input;
 	char **tokens;
@@ -20,7 +20,7 @@ void looper(void)
 		tokens = tokenize(input);	/*splits input into tokens*/
 		if (!tokens)
 			status = -1;
-		status = launch(tokens);	/*executes tokens*/
+		status = launch(av, tokens, input);	/*executes tokens*/
 		if (status != 1)
 			status = -1;
 
