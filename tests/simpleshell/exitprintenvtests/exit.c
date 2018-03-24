@@ -22,25 +22,28 @@ int _strcmp(char *s1, char *s2)
  * @s: input string
  * Return: sum or -1
  */
-int _atoi(char *s)
+int _atoi(char *exitinput)
 {
 	int sum = 0;
 
-	if (s == NULL)
+	if (exitinput == NULL)
 		return(-1);
 
-	while (*s != '\0')
+	while (*exitinput != '\0')
 	{
-		if (*s >= '0' && *s <= '9')
+		if (*exitinput >= '0' && *exitinput <= '9')
 		{
 			sum *= 10;
-			sum += (*s - '0');
-			s++;
+			sum += (*exitinput - '0');
+			exitinput++;
 		}
 		else
 			return (-1);
 	}
-	return (sum);
+	if (sum > 255)
+		return (-1);
+	else
+		return (sum);
 }
 /**
  * _exit - built in exit function
@@ -62,4 +65,5 @@ int _exit(char **tokens)
 	}
 	perror("Error");
 	return (-1);
+
 }

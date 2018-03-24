@@ -39,11 +39,13 @@ int launch(char **av, char **tokens, char *line)
 					}
 				}
 			}
+
 		}
 		else
 		{
 			child_pid = wait(NULL);
 		}
 	}
+	printf("%i", count);
 	return (1);
 }
