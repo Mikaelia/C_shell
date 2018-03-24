@@ -27,25 +27,29 @@ int _strcmp_env(char *s1, char *s2)
 * Return 1 if success or 0 if fails
 **/
 
-int printenviron(char **argv)
+int printenviron(void)
 {
-	char env[] = "env";
+	extern char **environ;
+//	char env[] = "env";
 	int i = 0;
 	int j = 0;
 
-	if (_strcmp_env(argv[0], env) == 0)
-	{
+//	if (_strcmp_env(argv[0], env) == 0)
+//	{
 		while(environ[i] != NULL)
 		{
-
-
-			/*write(STDOUT_FILENO, environ[i], _strlen(environ[i])-1);
-			  write(STDOUT_FILENO, "\n", 1); */
+			write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
+			write(STDOUT_FILENO, "\n", 1);
 			i++;
 			/* printf("%s\n", environ[i++]); */
 		}
 		return (1);
-	}
+/*	}
 	else
-		return (0);
+	return (0); */
+}
+
+void main(void)
+{
+	printenviron();
 }
