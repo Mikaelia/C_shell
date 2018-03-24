@@ -15,7 +15,6 @@ int launch(char **av, char **tokens, char *line)
 	count = 0;
 
 	child_pid = fork();
-	count++;
 	if (child_pid == -1)
 	{
 		printf("Error:");
@@ -25,6 +24,7 @@ int launch(char **av, char **tokens, char *line)
 	{
 		if (execve(tokens[0], tokens, NULL) == -1)
 		{
+			count++;
 			executable = checkpath(tokens[0]); /*return NULL on fail*/
 			if (execve(executable, tokens, NULL) == -1)
 			{
