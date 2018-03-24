@@ -21,8 +21,8 @@ void looper(char **av)
 		tokens = tokenize(input);	/*splits input into tokens*/
 		if (!tokens)
 			status = -1;
-		printf("This is our first command%s:\n", tokens[0]);
-		status = launch(tokens);	/*executes tokens*/
+
+		status = launch(av, tokens, input);	/*executes tokens*/
 		if (status != 1)
 			status = -1;
 

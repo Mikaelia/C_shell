@@ -5,18 +5,17 @@
   *
   * Return: 0
  */
-int launch(char **tokens)
+int launch(char **av, char **tokens, char *line)
 {
 	pid_t child_pid;
 	char *executable;
-	int i;
-	static int comcount;
+	static int count;
 
 	executable = NULL;
-	i = 0;
-	comcount = 0;
+	count = 0;
 
 	child_pid = fork();
+	count++;
 	if (child_pid == -1)
 	{
 		printf("Error:");
@@ -29,7 +28,8 @@ int launch(char **tokens)
 			executable = checkpath(tokens[0]); /*return NULL on fail*/
 			if (execve(executable, tokens, NULL) == -1)
 			{
-				/* printerror; */
+				printf("%i", count);
+				printerror(av, count, line);
 				exit(0);
 			}
 
@@ -37,11 +37,7 @@ int launch(char **tokens)
 	}
 	else
 	{
-		do {
-			child_pid = wait(NULL);
-			i++;
-			comcount++;
-		} while (tokens[i] != NULL);
+		child_pid = wait(NULL);
 	}
 	printf("%i", comcount);
 	return (1);
