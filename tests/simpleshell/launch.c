@@ -36,7 +36,7 @@ int launch(char **argv, char **tokens)
 	}
 	else
 	{
-			child_pid = wait(NULL);
+		child_pid = wait(NULL);
 	}
 	printf("%i", comcount);
 	return (1);
