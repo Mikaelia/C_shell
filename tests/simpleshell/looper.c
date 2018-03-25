@@ -29,5 +29,4 @@ void looper(char **av)
 		}
 
 	} while (status);
-	free2pointer(tokens);
 }

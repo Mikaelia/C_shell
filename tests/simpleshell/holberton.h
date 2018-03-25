@@ -28,7 +28,7 @@ char **tokenize(char *str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
 int launch(char **av, char **tokens, char *input);
 /*checkfunctions*/
-int checkbuiltins(char **tokens);
+int checkbuiltins(char **tokens, char *line);
 char *checkpath(char *command);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *_findpath(char *);
@@ -38,7 +38,7 @@ int _strlen(char *);
 tokenlist_t *tokentolist(tokenlist_t **head, char *token);
 tokenlist_t *pathsplitlist(char *path);
 int statcommand(char *exec);
-int __exit(char **tokens);
+int __exit(char **tokens, char *line);
 int printenviron(void);
 void printerror(char **, int, char*);
 #endif

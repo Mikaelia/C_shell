@@ -5,7 +5,7 @@
   *
   * Return: -1 if not builtin, 1 if printenv, exit if exit
   */
-int checkbuiltins(char **tokens)
+int checkbuiltins(char **tokens, char *line)
 {
-	return (__exit(tokens));
+	return (__exit(tokens, line));
 }

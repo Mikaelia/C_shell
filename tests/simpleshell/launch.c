@@ -14,7 +14,7 @@ int launch(char **av, char **tokens, char *line)
 	executable = NULL;
 	count = 0;
 
-	if (checkbuiltins(tokens) == -1) /*returns -1 on fail*/
+	if (checkbuiltins(tokens, line) == -1) /*returns -1 on fail*/
 	{
 
 		child_pid = fork();
@@ -32,8 +32,9 @@ int launch(char **av, char **tokens, char *line)
 					executable = checkpath(tokens[0]); /*return NULL on fail*/
 					if (execve(executable, tokens, NULL) == -1)
 					{
-						free2pointer(tokens);
 						printerror(av, count, line);
+						free2pointer(tokens);
+						free(line);
 						exit(0);
 					}
 				}

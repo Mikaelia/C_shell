@@ -46,7 +46,7 @@ int _atoi(char *s)
  * __exit - built in exit function
  * @tokens: arg list
  */
-int __exit(char **tokens)
+int __exit(char **tokens, char *line)
 {
 	int i;
 
@@ -56,10 +56,15 @@ int __exit(char **tokens)
 		if (i > 0)
 		{
 			free(tokens);
+			free(line);
 			exit(i);
 		}
 		else
+		{
+			free(line);
+			free(tokens);
 			exit(0);
+		}
 	}
 	return (-1);
 }

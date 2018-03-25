@@ -39,6 +39,11 @@ char *appendcmd(const tokenlist_t *h, char *command)
 	j = 0;
 	token = h->token;
 
+	if (h == NULL)
+		return (NULL);
+	if (command == NULL)
+		return (NULL);
+
 	sum += strlen(token);
 	sum += strlen(command);
 
