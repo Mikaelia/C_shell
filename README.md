@@ -15,7 +15,9 @@ Clone this repository and compile the files into an executable using the GCC com
 https://github.com/
 ```
 All files need to be compiled on an Ubuntu 14.04 LTS machine using:
+6```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+6```
 
 ## Usage
 After compilation you can start the program by running the command:
