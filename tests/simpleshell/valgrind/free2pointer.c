@@ -14,5 +14,4 @@ void free2pointer(char **tokens)
 	{
 		    free(tokens[i]);
 	}
-	free(tokens);
 }

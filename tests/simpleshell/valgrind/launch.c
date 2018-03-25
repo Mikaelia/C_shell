@@ -20,7 +20,7 @@ int launch(char **av, char **tokens, char *line)
 		child_pid = fork();
 		if (child_pid == -1)
 		{
-			exit(0);
+			return (-1);
 		}
 		if (child_pid == 0)
 		{
@@ -33,6 +33,7 @@ int launch(char **av, char **tokens, char *line)
 					if (execve(executable, tokens, NULL) == -1)
 					{
 						printerror(av, count, line);
+						free(executable);
 						free(tokens);
 						free(line);
 						exit(0);
