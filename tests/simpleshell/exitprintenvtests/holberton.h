@@ -37,7 +37,7 @@ tokenlist_t *pathsplitlist(char *path);
 void freelist(tokenlist_t *head);
 int statcommand(char *exec);
 int _exit(char **tokens);
-int printenviron(char **argv);
+int printenviron(char **tokens);
 void printerror(char **, int, char*);
 int checkbuiltins(char **tokens);
 #endif

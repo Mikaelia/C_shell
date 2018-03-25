@@ -6,21 +6,20 @@
   */
 int _strlen(char *string)
 {
-	int count;
+	int i;
 
 	if (string == NULL)
 	{
 		return (0);
 	}
 
-	count = 0;
-	while (string != NULL)
+	i = 0;
+	while (string[i] != '\0')
 	{
-		count++;
-		string++;
+		i++;
 	}
-	count++;
-	return (count);
+	i++;
+	return (i);
 }
 /**
   * appendcmd - creates new buf to hold nodeval + user input

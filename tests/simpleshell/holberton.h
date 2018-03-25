@@ -35,10 +35,11 @@ char *_findpath(char *);
 char *findpath(void);
 char **pathsplit(char*);
 int _strlen(char *);
+int _strcmp(char *s1, char *s2);
 tokenlist_t *tokentolist(tokenlist_t **head, char *token);
 tokenlist_t *pathsplitlist(char *path);
 int statcommand(char *exec);
 int __exit(char **tokens, char *line);
-int printenviron(void);
+int printenviron(char **tokens);
 void printerror(char **, int, char*);
 #endif
