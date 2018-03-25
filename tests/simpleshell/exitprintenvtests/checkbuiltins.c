@@ -9,4 +9,6 @@ int checkbuiltin(char **tokens)
 {
 	if (_exit(tokens) == -1)
 		return (-1);
+	if (printenviron(tokens) == -1)
+		return (-1);
 }
