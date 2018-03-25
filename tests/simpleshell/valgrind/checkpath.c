@@ -14,19 +14,17 @@ char *checkpath(char *command)
 
 	if (command == NULL)
 	{
-		printf("No Command");
 		return (NULL);
 	}
-
 	pathvar = findpath();
 	if (pathvar == NULL)
 	{
-		free(pathvar);
 		return (NULL);
 	}
 	pathlist = pathsplitlist(pathvar);
 	while (pathlist)
 	{
+		printf("%s", pathlist->token);
 		executable = appendcmd(pathlist, command);
 		if (stat(executable, &st) < 0)
 		{
@@ -34,7 +32,10 @@ char *checkpath(char *command)
 			pathlist = pathlist->next;
 		}
 		else if (stat(executable, &st) == 0)
+		{
+			freelist(pathlist);
 			return (executable);
+		}
 	}
 	freelist(pathlist);
 	return(NULL);

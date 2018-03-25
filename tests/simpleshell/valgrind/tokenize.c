@@ -17,6 +17,7 @@ void *_realloc(void *ptr, unsigned int original, unsigned int resized)
 		return (ptr);
 	if (resized == 0 && ptr != NULL)
 	{
+		free(ptr);
 		return (NULL);
 	}
 	if (ptr == NULL)
@@ -33,6 +34,7 @@ void *_realloc(void *ptr, unsigned int original, unsigned int resized)
 		for (i = 0; i < original; i++)
 			newbuf[i] = tmp[i];
 	}
+	free(ptr);
 	vptr = newbuf;
 	return (vptr);
 }
@@ -50,6 +52,9 @@ char **tokenize(char *str)
 	const char *deliminator  = " \t\r\n\a";
 	int bufsize = 20;
 	int new;
+
+	if (str == NULL)
+		return 
 
 	tokens = malloc(sizeof(char *) * bufsize);
 	if (!tokens)

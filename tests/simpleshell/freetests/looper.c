@@ -6,27 +6,23 @@
   *
   *
   */
-void looper(char **av)
+void looper(__attribute__((unused))char **av)
 {
 	char *input;
 	char **tokens;
 	int status;
 
 	status = 0;
-	printf("This is arv[0]%s\n", av[0]);
 	do {
 		input = _prompt();		/*gets input stream*/
 		if (input == NULL)
 			status = -1;
-		tokens = tokenize(input);	/*splits input into tokens*/
+		tokens = tokenize(input);
 		if (!tokens)
+		{
 			status = -1;
+		}
 
-		status = launch(av, tokens, input);	/*executes tokens*/
-		if (status != 1)
-			status = -1;
-
-		free(input);
-		free(tokens);
 	} while (status);
+	free2pointer(tokens);
 }

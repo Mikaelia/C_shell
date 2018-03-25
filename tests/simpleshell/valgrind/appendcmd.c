@@ -12,14 +12,14 @@ int _strlen(char *string)
 	{
 		return (0);
 	}
-	printf("debug1");
+
 	count = 0;
-	while (*string != '\0')
+	while (string != NULL)
 	{
 		count++;
 		string++;
-		printf("debug2");
 	}
+	count++;
 	return (count);
 }
 /**
@@ -47,7 +47,7 @@ char *appendcmd(const tokenlist_t *h, char *command)
 	sum += strlen(token);
 	sum += strlen(command);
 
-	new = malloc(sizeof(char) * sum + 2);
+	new = malloc(sizeof(char) * sum);
 	if (new == NULL)
 	{
 		return (NULL);

@@ -61,7 +61,6 @@ char **tokenize(char *str)
 	if (!token)
 	{
 		write(STDOUT_FILENO, "\n", 1);
-		free(tokens);
 		exit(0);
 	}
 	i = 0;
