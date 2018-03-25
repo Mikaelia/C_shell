@@ -12,14 +12,14 @@ int _strlen(char *string)
 	{
 		return (0);
 	}
-
+	printf("debug1");
 	count = 0;
-	while (string != NULL)
+	while (*string != '\0')
 	{
 		count++;
 		string++;
+		printf("debug2");
 	}
-	count++;
 	return (count);
 }
 /**

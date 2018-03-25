@@ -37,8 +37,6 @@ char *findpath()
 	int i;
 	char *findmatch;
 
-	extern char **environ;
-
 	pathvar = NULL;
 	i = 0;
 

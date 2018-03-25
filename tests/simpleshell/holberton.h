@@ -38,6 +38,6 @@ tokenlist_t *pathsplitlist(char *path);
 void freelist(tokenlist_t *head);
 int statcommand(char *exec);
 int __exit(char **tokens);
-int printenviron(void);
+int printenviron(char **);
 void printerror(char **, int, char*);
 #endif
