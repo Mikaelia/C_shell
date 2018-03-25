@@ -7,5 +7,8 @@
   */
 int checkbuiltins(char **tokens, char *line)
 {
-	return (__exit(tokens, line));
+	if (__exit(tokens, line) == -1 || printenviron(tokens) == -1)
+		return (-1);
+	else
+		return (-1);
 }

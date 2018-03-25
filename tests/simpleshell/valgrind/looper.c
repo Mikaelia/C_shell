@@ -17,22 +17,14 @@ void looper(char **av)
 	do {
 		input = _prompt();		/*gets input stream*/
 		if (input == NULL)
-		{
 			status = -1;
-			free(input);
-		}
 		tokens = tokenize(input);	/*splits input into tokens*/
-		if (tokens == NULL)
-		{
-			free(input);
-			free(tokens);
+		if (!tokens)
 			status = -1;
-		}
-		status = launch(av, tokens, input);	/*executes tokens*/
+
+		checkbuiltins(tokens, input);	/*executes tokens*/
 		if (status != 1)
 		{
-			free(tokens);
-			free(input);
 			status = -1;
 		}
 

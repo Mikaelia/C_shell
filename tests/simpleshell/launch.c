@@ -14,7 +14,7 @@ int launch(char **av, char **tokens, char *line)
 	executable = NULL;
 	count = 0;
 
-	if (checkbuiltins(tokens, line) == -1) /*returns -1 on fail*/
+	if (checkbuiltins(tokens, line) == -1)
 	{
 
 		child_pid = fork();
