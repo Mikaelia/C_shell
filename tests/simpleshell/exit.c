@@ -55,6 +55,7 @@ int __exit(char **tokens)
 		i = _atoi(tokens[1]);
 		if (i > 0)
 		{
+			free(tokens);
 			exit(i);
 		}
 		else

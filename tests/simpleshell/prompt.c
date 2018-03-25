@@ -13,6 +13,7 @@ char *_prompt()
 	s = getline(&line, &bufsize, stdin); /*stores address of buffer w args*/
 	if (s == -1)
 	{
+		free(line);
 		return (NULL);
 	}
 	return (line);

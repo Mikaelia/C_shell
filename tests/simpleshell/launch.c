@@ -20,8 +20,7 @@ int launch(char **av, char **tokens, char *line)
 		child_pid = fork();
 		if (child_pid == -1)
 		{
-			printf("Fork error");
-			exit(1);
+			exit(0);
 		}
 		if (child_pid == 0)
 		{
@@ -33,7 +32,7 @@ int launch(char **av, char **tokens, char *line)
 					executable = checkpath(tokens[0]); /*return NULL on fail*/
 					if (execve(executable, tokens, NULL) == -1)
 					{
-						printf("%i", count);
+						free2pointer(tokens);
 						printerror(av, count, line);
 						exit(0);
 					}
@@ -46,6 +45,5 @@ int launch(char **av, char **tokens, char *line)
 			child_pid = wait(NULL);
 		}
 	}
-	printf("%i", count);
 	return (1);
 }

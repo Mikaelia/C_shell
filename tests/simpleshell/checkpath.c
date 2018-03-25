@@ -19,16 +19,23 @@ char *checkpath(char *command)
 	}
 
 	pathvar = findpath();
+	if (pathvar == NULL)
+	{
+		free(pathvar);
+		return (NULL);
+	}
 	pathlist = pathsplitlist(pathvar);
 	while (pathlist)
 	{
 		executable = appendcmd(pathlist, command);
 		if (stat(executable, &st) < 0)
 		{
+			free(executable);
 			pathlist = pathlist->next;
 		}
 		else if (stat(executable, &st) == 0)
 			return (executable);
 	}
+	freelist(pathlist);
 	return(NULL);
 }

@@ -24,9 +24,10 @@ void looper(char **av)
 
 		status = launch(av, tokens, input);	/*executes tokens*/
 		if (status != 1)
+		{
 			status = -1;
+		}
 
-		free(input);
-		free(tokens);
 	} while (status);
+	free2pointer(tokens);
 }
