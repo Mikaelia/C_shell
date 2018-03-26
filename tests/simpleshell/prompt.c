@@ -9,9 +9,9 @@ char *_prompt()
 	char *line = NULL;
 	int s;
 	size_t bufsize = 0;
+
 	printf("$ ");
-	s = getline(&line, &bufsize, stdin); /*stores address of buffer w args*/
-	if (s == -1)
+	if (getline(&line, &bufsize, stdin) == -1)
 	{
 		free(line);
 		return (NULL);

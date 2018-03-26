@@ -15,8 +15,9 @@ void looper(char **av)
 
 	count = 1;
 	status = 0;
+
 	do {
-		input = _prompt();		/*gets input stream*/
+		input = _prompt();
 		if (input == NULL)
 			status = -1;
 		tokens = tokenize(input);	/*splits input into tokens*/
