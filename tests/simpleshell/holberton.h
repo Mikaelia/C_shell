@@ -26,7 +26,7 @@ void looper(char **);
 char *_prompt(void);
 char **tokenize(char *str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
-int launch(char **av, char **tokens, char *input);
+int launch(char **av, char **tokens, char *input, int count);
 /*checkfunctions*/
 int checkbuiltins(char **tokens, char *line);
 char *checkpath(char *command);
@@ -41,5 +41,5 @@ tokenlist_t *pathsplitlist(char *path);
 int statcommand(char *exec);
 int __exit(char **tokens, char *line);
 int printenviron(char **tokens);
-void printerror(char **, int, char*);
+void printerror(char **, int, char *);
 #endif
