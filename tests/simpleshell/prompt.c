@@ -4,17 +4,16 @@
   *
   * Return: buffer containing command line arguments
   */
-char *_prompt()
+int _prompt(char **line)
 {
-	char *line = NULL;
 	int s;
 	size_t bufsize = 0;
 	printf("$ ");
-	s = getline(&line, &bufsize, stdin); /*stores address of buffer w args*/
+	s = getline(line, &bufsize, stdin); /*stores address of buffer w args*/
 	if (s == -1)
 	{
 		free(line);
-		return (NULL);
+		return (0);
 	}
-	return (line);
+	return (s);
 }

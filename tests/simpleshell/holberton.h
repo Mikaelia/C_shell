@@ -23,7 +23,7 @@ void free2pointer(char **tokens);
 void freelist(tokenlist_t *head);
 extern char **environ;
 void looper(char **);
-char *_prompt(void);
+int _prompt(char **);
 char **tokenize(char *str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
 int launch(char **av, char **tokens, char *input, int count);

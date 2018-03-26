@@ -12,6 +12,9 @@ void looper(char **av)
 	char **tokens;
 	int status;
 	static int count;
+	int x;
+
+	x = 0;
 
 	count = 1;
 	do {
@@ -19,7 +22,8 @@ void looper(char **av)
 		input = NULL;
 		tokens = NULL;
 
-		input = _prompt();		/*gets input stream*/
+		x = _prompt(&input);
+		printf("%d\n", x);
 		if (input == NULL)
 			status = -1;
 		tokens = tokenize(input);	/*splits input into tokens*/
@@ -32,6 +36,7 @@ void looper(char **av)
 			status = -1;
 		}
 		count++;
+		free(*tokens);
 		free(tokens);
 	} while (status);
 }
