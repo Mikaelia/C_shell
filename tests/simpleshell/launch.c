@@ -14,7 +14,7 @@ int launch(char **av, char **tokens, char *line, int count)
 
 	if (checkbuiltins(tokens, line) == -1)
 	{
-
+		executable = checkpath(tokens[0]); /*return Null on fail */
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -22,18 +22,12 @@ int launch(char **av, char **tokens, char *line, int count)
 		}
 		if (child_pid == 0)
 		{
-
+			if (execve(tokens[0], tokens, NULL) == -1)
 			{
-				if (execve(tokens[0], tokens, NULL) == -1)
+				if (execve(executable, tokens, NULL) == -1)
 				{
-					executable = checkpath(tokens[0]); /*return NULL on fail*/
-					if (execve(executable, tokens, NULL) == -1)
-					{
-						printerror(av, count, line);
-						free(tokens);
-						free(line);
-						exit(0);
-					}
+					printerror(av, count, line);
+					exit(0);
 				}
 			}
 

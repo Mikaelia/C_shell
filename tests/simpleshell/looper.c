@@ -14,8 +14,11 @@ void looper(char **av)
 	static int count;
 
 	count = 1;
-	status = 0;
 	do {
+		status = 0;
+		input = NULL;
+		tokens = NULL;
+
 		input = _prompt();		/*gets input stream*/
 		if (input == NULL)
 			status = -1;
@@ -28,6 +31,7 @@ void looper(char **av)
 		{
 			status = -1;
 		}
-	count++;
+		count++;
+		free(tokens);
 	} while (status);
 }
