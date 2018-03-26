@@ -33,6 +33,7 @@ void *_realloc(void *ptr, unsigned int original, unsigned int resized)
 		for (i = 0; i < original; i++)
 			newbuf[i] = tmp[i];
 	}
+	free(ptr);
 	vptr = newbuf;
 	return (vptr);
 }

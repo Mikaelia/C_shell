@@ -51,9 +51,5 @@ char *findpath()
 		else
 			i++;
 	}
-	if (pathvar == NULL)
-	{
-		perror("PATH NOT FOUND");
-	}
 	return (pathvar);
 }
