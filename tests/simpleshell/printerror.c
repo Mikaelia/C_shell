@@ -45,6 +45,7 @@ char *_itos(int num)
 		i++;
 	}
 	new[i] = (n % 10 + '0');
+	new[++i] = '\0';
 	return (new);
 }
 
