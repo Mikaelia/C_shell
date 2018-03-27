@@ -20,10 +20,11 @@ char *checkpath(char *command)
 	pathvar = _strdup(findpath());
 	if (pathvar == NULL)
 	{
-		free(pathvar);
 		return (NULL);
 	}
 	pathlist = pathsplitlist(pathvar);
+	if (pathlist == NULL)
+		free(pathvar);
 	/*cli.path = &head;*/
 	while (pathlist)
 	{
@@ -36,6 +37,7 @@ char *checkpath(char *command)
 		else if (stat(executable, &st) == 0)
 			return (executable);
 	}
+	free(pathvar);
 	freelist(pathlist);
 	return(NULL);
 }

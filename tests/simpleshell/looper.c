@@ -28,6 +28,8 @@ void looper(char **av)
 	unsigned int interactive = 0;
 	static int count = 1;
 
+	free_t stash = {NULL, NULL, NULL, NULL};
+
 	signal(SIGINT, sig_handler);
 
 	if (!isatty(STDIN_FILENO))
@@ -40,14 +42,16 @@ void looper(char **av)
 		status = 0;
 		input = NULL;
 		tokens = NULL;
+
 		_prompt(&input);
-		if (input == NULL)
+		stash.input = input;
+		if (stash.input == NULL)
 		{
 			perror("getline fail");
 			exit(1);
 		}
-		tokens = tokenize(input);	/*splits input into tokens*/
-		if (!tokens)
+		stash.commands = tokenize(stash.input);		/*splits input into tokens*/
+		if (!stash.commands)
 		{
 			perror("tokenize fail");
 			exit(1);
@@ -58,8 +62,8 @@ void looper(char **av)
 			status = -1;
 		}
 		count++;
-		free2pointer(tokens);
-		free(input);
+		free2pointer(stash.commands);
+		free(stash.input);
 
 		flag = 0;
 		if (interactive == 0)
@@ -67,4 +71,5 @@ void looper(char **av)
 	} while (status);
 	if (interactive == 0)
 		write(STDOUT_FILENO, "\n", 1);
+	free(stash.input);
 }
