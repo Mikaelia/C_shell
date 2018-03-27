@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <signal.h>
 /**
   * struct tokenlist_t - linked list of parsed path variable string
   * @token: absolute path
@@ -19,11 +20,16 @@ typedef struct tokenlist_t
 	char *token;
 	struct tokenlist_t *next;
 } tokenlist_t;
+
 void free2pointer(char **tokens);
 void freelist(tokenlist_t *head);
+
 extern char **environ;
+unsigned int flag;
+
+void sig_handler(int sig_handler);
 void looper(char **);
-char *_prompt(void);
+int _prompt(char **);
 char **tokenize(char *str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
 int launch(char **av, char **tokens, char *input, int count);
@@ -42,4 +48,5 @@ int statcommand(char *exec);
 int __exit(char **tokens, char *line);
 int printenviron(char **tokens);
 void printerror(char **, int, char *);
+char *_strdup(char *);
 #endif

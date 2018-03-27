@@ -58,7 +58,7 @@ char **tokenize(char *str)
 		return (NULL);
 	}
 
-	token = strtok(str, deliminator);
+	token = _strdup(strtok(str, deliminator));
 	if (!token)
 	{
 		write(STDOUT_FILENO, "\n", 1);
@@ -77,7 +77,7 @@ char **tokenize(char *str)
 			if (!tokens)
 				return (NULL);
 		}
-		token = strtok(NULL, deliminator);
+		token = _strdup(strtok(NULL, deliminator));
 	}
 	tokens[i] = '\0';
 	return (tokens);
