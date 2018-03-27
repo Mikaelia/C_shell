@@ -37,5 +37,5 @@ char *checkpath(char *command)
 			return (executable);
 	}
 	freelist(pathlist);
-	return(NULL);
+	return (NULL);
 }
