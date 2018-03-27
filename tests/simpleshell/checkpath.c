@@ -5,14 +5,13 @@
   * @command: input command string
   * Return: NULL if no match found, or executable file if founc
   */
-char *checkpath(char *command)
+char *checkpath(free_t stash)
 {
-	char *executable;
 	char *pathvar;
 	tokenlist_t *pathlist;
 	struct stat st;
 
-	if (command == NULL)
+	if (stash.commands[0] == NULL)
 	{
 		return (NULL);
 	}
@@ -20,23 +19,24 @@ char *checkpath(char *command)
 	pathvar = _strdup(findpath());
 	if (pathvar == NULL)
 	{
+		free(pathvar);
 		return (NULL);
 	}
 	pathlist = pathsplitlist(pathvar);
 	if (pathlist == NULL)
 		free(pathvar);
-	/*cli.path = &head;*/
 	while (pathlist)
 	{
-		executable = _strdup(appendcmd(pathlist, command));
-		if (stat(executable, &st) < 0)
+		stash.executable = _strdup(appendcmd(pathlist, stash.commands[0]));
+		if (stat(stash.executable, &st) < 0)
 		{
-			free(executable);
+			free(stash.executable);
 			pathlist = pathlist->next;
 		}
-		else if (stat(executable, &st) == 0)
-			return (executable);
+		else if (stat(stash.executable, &st) == 0)
+			return (stash.executable);
 	}
+	free(stash.executable);
 	free(pathvar);
 	freelist(pathlist);
 	return(NULL);

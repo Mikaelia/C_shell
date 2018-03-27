@@ -24,9 +24,9 @@ typedef struct tokenlist_t
 typedef struct free_t
 {
 	char **commands;
-	tokenlist_t pathlist;
 	char *token;
 	char *input;
+	char *executable;
 } free_t;
 
 void free2pointer(char **tokens);
@@ -40,10 +40,10 @@ void looper(char **);
 int _prompt(char **);
 char **tokenize(char *str);
 void *_realloc(void *ptr, unsigned int, unsigned int);
-int launch(char **av, char **tokens, char *input, int count);
+int launch(char **av, free_t stash, int count);
 /*checkfunctions*/
 int checkbuiltins(char **tokens, char *line);
-char *checkpath(char *command);
+char *checkpath(free_t stash);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *_findpath(char *);
 char *findpath(void);

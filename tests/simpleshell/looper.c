@@ -23,12 +23,11 @@ void sig_handler(int sig_handler)
 void looper(char **av)
 {
 	char *input;
-	char **tokens;
 	int status;
 	unsigned int interactive = 0;
 	static int count = 1;
 
-	free_t stash = {NULL, {NULL, NULL}, NULL, NULL};
+	free_t stash = {NULL, NULL, NULL, NULL};
 
 	signal(SIGINT, sig_handler);
 
@@ -41,7 +40,6 @@ void looper(char **av)
 		flag = 1;
 		status = 0;
 		input = NULL;
-		tokens = NULL;
 
 		_prompt(&input);
 		stash.input = input;
@@ -56,7 +54,7 @@ void looper(char **av)
 			perror("tokenize fail");
 			exit(1);
 		}
-		status = launch(av, tokens, input, count);	/*executes tokens*/
+		status = launch(av, stash, count);	/*executes tokens*/
 		if (status != 1)
 		{
 			status = -1;
