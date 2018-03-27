@@ -41,7 +41,7 @@ void looper(char **av)
 		input = NULL;
 		tokens = NULL;
 		_prompt(&input);
->>>>>>> a8e1bbb71d75ace8dc2a57869d022dcfbd621524
+
 		if (input == NULL)
 		{
 			perror("getline fail");
@@ -65,7 +65,7 @@ void looper(char **av)
 		flag = 0;
 		if (interactive == 0)
 			write(STDOUT_FILENO, "$ ", 2);
->>>>>>> a8e1bbb71d75ace8dc2a57869d022dcfbd621524
+
 	} while (status);
 	if (interactive == 0)
 		write(STDOUT_FILENO, "\n", 1);
