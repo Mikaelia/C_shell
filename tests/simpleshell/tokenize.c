@@ -43,42 +43,38 @@ void *_realloc(void *ptr, unsigned int original, unsigned int resized)
   *
   * Return: Array of each word of string
   */
-char **tokenize(char *str)
+void tokenize(free_t *stash)
 {
-	char **tokens;
-	char *token;
 	int i;
 	const char *deliminator  = " \t\r\n\a";
 	int bufsize = 20;
-	int new;
+	int newsize;
 
-	tokens = malloc(sizeof(char *) * bufsize);
-	if (!tokens)
-	{
-		return (NULL);
-	}
+	stash->commands = malloc(sizeof(char *) * bufsize);
 
-	token = _strdup(strtok(str, deliminator));
-	if (!token)
+	stash->token = _strdup(strtok(stash->input, deliminator));
+	if (!stash->token)
 	{
 		write(STDOUT_FILENO, "\n", 1);
-		free(tokens);
-		exit(0);
+		free(stash->commands);
+		exit(2);
 	}
 	i = 0;
-	while (token != NULL)
+	while (stash->token != NULL)
 	{
-		tokens[i] = token;
+		stash->commands[i] = stash->token;
 		i++;
 		if (i >= bufsize)
 		{
-			new = bufsize + 5;
-			tokens = _realloc(tokens, bufsize * sizeof(char *), new * sizeof(char *));
-			if (!tokens)
-				return (NULL);
+			newsize = bufsize + 5;
+			stash->commands = _realloc(stash->commands, bufsize * sizeof(char *), newsize* sizeof(char *));
+			if (!stash->commands)
+			{
+				perror("REALLOC FAIL");
+				exit(2);
+			}
 		}
-		token = _strdup(strtok(NULL, deliminator));
+		stash->token = _strdup(strtok(NULL, deliminator));
 	}
-	tokens[i] = '\0';
-	return (tokens);
+	stash->commands[i] = '\0';
 }

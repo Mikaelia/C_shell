@@ -8,11 +8,12 @@ int _prompt(char **line)
 {
 	int s;
 	size_t bufsize = 0;
-	s = getline(line, &bufsize, stdin); /*stores address of buffer w args*/
+	s = getline(line, &bufsize, stdin);
 	if (s == -1)
 	{
-		free(line);
-		return (0);
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "\n", 1);
+		exit(2);
 	}
 	return (s);
 }

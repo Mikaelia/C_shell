@@ -27,7 +27,7 @@ void looper(char **av)
 	unsigned int interactive = 0;
 	static int count = 1;
 
-	free_t stash = {NULL, NULL, NULL, NULL};
+	free_t stash = {NULL, NULL, NULL, NULL, NULL};
 
 	signal(SIGINT, sig_handler);
 
@@ -43,25 +43,27 @@ void looper(char **av)
 
 		_prompt(&input);
 		stash.input = input;
-		if (stash.input == NULL)
-		{
-			perror("getline fail");
-			exit(1);
-		}
-		stash.commands = tokenize(stash.input);		/*splits input into tokens*/
+
+		tokenize(&stash);
 		if (!stash.commands)
 		{
 			perror("tokenize fail");
 			exit(1);
 		}
-		status = launch(av, stash, count);	/*executes tokens*/
+
+		status = launch(av, &stash, count);
 		if (status != 1)
 		{
 			status = -1;
 		}
+
 		count++;
 		free2pointer(stash.commands);
 		free(stash.input);
+		free(stash.token);
+		free(stash.executable);
+		free(stash.pathvar);
+
 
 		flag = 0;
 		if (interactive == 0)
