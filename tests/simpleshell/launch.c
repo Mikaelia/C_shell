@@ -14,29 +14,28 @@ int launch(char **av, char **tokens, char *line, int count)
 
 	if (checkbuiltins(tokens, line) == -1)
 	{
-
 		executable = checkpath(tokens[0]); /*return NULL on fail*/
 		child_pid = fork();
 		if (child_pid == -1)
 		{
+			perror("Child failed");
 			exit(0);
 		}
 		if (child_pid == 0)
 		{
-
 			if (execve(tokens[0], tokens, NULL) == -1)
 			{
 				if (execve(executable, tokens, NULL) == -1)
 				{
 					printerror(av, count, line);
-					exit(0);
+					_exit(0);
 				}
 			}
 
 		}
 		else
 		{
-			child_pid = wait(NULL);
+			wait(NULL);
 		}
 	}
 	return (1);

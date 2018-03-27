@@ -14,20 +14,20 @@ char *checkpath(char *command)
 
 	if (command == NULL)
 	{
-		printf("No Command");
 		return (NULL);
 	}
 
-	pathvar = findpath();
+	pathvar = _strdup(findpath());
 	if (pathvar == NULL)
 	{
 		free(pathvar);
 		return (NULL);
 	}
 	pathlist = pathsplitlist(pathvar);
+	/*cli.path = &head;*/
 	while (pathlist)
 	{
-		executable = appendcmd(pathlist, command);
+		executable = _strdup(appendcmd(pathlist, command));
 		if (stat(executable, &st) < 0)
 		{
 			free(executable);
