@@ -36,13 +36,18 @@ void looper(char **av)
 	if (interactive == 0)
 		write(STDOUT_FILENO, "$ ", 2);
 	flag = 0;
-	do {
-		flag = 1;
-		status = 0;
-		input = NULL;
+	input = NULL;
 
-		_prompt(&input);
+	while (_prompt(&input))
+	{
+		flag = 1;
+
 		stash.input = input;
+		if (stash.input[0] == '\n')
+		{
+			write(STDOUT_FILENO, "$ ", 2);
+			continue;
+		}
 
 		tokenize(&stash);
 		if (!stash.commands)
@@ -68,7 +73,7 @@ void looper(char **av)
 		flag = 0;
 		if (interactive == 0)
 			write(STDOUT_FILENO, "$ ", 2);
-	} while (status);
+	}
 	if (interactive == 0)
 		write(STDOUT_FILENO, "\n", 1);
 	free(stash.input);

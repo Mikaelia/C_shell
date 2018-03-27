@@ -6,14 +6,10 @@
   */
 int _prompt(char **line)
 {
-	int s;
 	size_t bufsize = 0;
-	s = getline(line, &bufsize, stdin);
-	if (s == -1)
+	if (getline(line, &bufsize, stdin) == -1)
 	{
-		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "\n", 1);
-		exit(2);
+		return (0);
 	}
-	return (s);
+	return (1);
 }
