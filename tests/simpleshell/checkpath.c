@@ -39,5 +39,5 @@ char *checkpath(char *command)
 	}
 	free(pathvar);
 	freelist(pathlist);
-	return(NULL);
+	return (NULL);
 }

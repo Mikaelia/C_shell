@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
   * _prompt - reads line for prompt
-  *
+  * @line: pointer to line
   * Return: buffer containing command line arguments
   */
 int _prompt(char **line)
