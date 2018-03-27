@@ -5,15 +5,16 @@
   *
   * Return: 0
  */
-int launch(char **av, char **tokens, char *line, int count)
+int launch(char **av, free_t stash, int count)
 {
 	pid_t child_pid;
 	char *executable;
 
 	executable = NULL;
 
-	if (checkbuiltins(tokens, line) == -1)
+	if (checkbuiltins(stash.commands, stash.input) == -1)
 	{
+		executable = checkpath(stash);
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -22,12 +23,11 @@ int launch(char **av, char **tokens, char *line, int count)
 		}
 		if (child_pid == 0)
 		{
-			if (execve(tokens[0], tokens, NULL) == -1)
+			if (execve(stash.commands[0], stash.commands, NULL) == -1)
 			{
-				if (execve(executable, tokens, NULL) == -1)
+				if (execve(executable, stash.commands, NULL) == -1)
 				{
-					printerror(av, count, line);
-
+					printerror(av, count, stash.input);
 					_exit(0);
 				}
 			}

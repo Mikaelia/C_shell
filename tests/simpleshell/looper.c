@@ -23,10 +23,11 @@ void sig_handler(int sig_handler)
 void looper(char **av)
 {
 	char *input;
-	char **tokens;
 	int status;
 	unsigned int interactive = 0;
 	static int count = 1;
+
+	free_t stash = {NULL, NULL, NULL, NULL};
 
 	signal(SIGINT, sig_handler);
 
@@ -39,28 +40,29 @@ void looper(char **av)
 		flag = 1;
 		status = 0;
 		input = NULL;
-		tokens = NULL;
+
 		_prompt(&input);
+
 
 		if (input == NULL)
 		{
 			perror("getline fail");
 			exit(1);
 		}
-		tokens = tokenize(input);	/*splits input into tokens*/
-		if (!tokens)
+		stash.commands = tokenize(stash.input);		/*splits input into tokens*/
+		if (!stash.commands)
 		{
 			perror("tokenize fail");
 			exit(1);
 		}
-		status = launch(av, tokens, input, count);	/*executes tokens*/
+		status = launch(av, stash, count);	/*executes tokens*/
 		if (status != 1)
 		{
 			status = -1;
 		}
 		count++;
-		free2pointer(tokens);
-		free(input);
+		free2pointer(stash.commands);
+		free(stash.input);
 
 		flag = 0;
 		if (interactive == 0)
@@ -69,4 +71,5 @@ void looper(char **av)
 	} while (status);
 	if (interactive == 0)
 		write(STDOUT_FILENO, "\n", 1);
+	free(stash.input);
 }
