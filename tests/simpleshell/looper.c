@@ -28,7 +28,7 @@ void looper(char **av)
 	unsigned int interactive = 0;
 	static int count = 1;
 
-	free_t stash = {NULL, NULL, NULL, NULL};
+	free_t stash = {NULL, {NULL, NULL}, NULL, NULL};
 
 	signal(SIGINT, sig_handler);
 
