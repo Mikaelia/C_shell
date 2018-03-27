@@ -39,5 +39,5 @@ char *checkpath(free_t stash)
 	free(stash.executable);
 	free(pathvar);
 	freelist(pathlist);
-	return(NULL);
+	return (NULL);
 }

@@ -15,7 +15,6 @@ int launch(char **av, free_t stash, int count)
 	if (checkbuiltins(stash.commands, stash.input) == -1)
 	{
 		executable = checkpath(stash);
-
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -28,7 +27,7 @@ int launch(char **av, free_t stash, int count)
 			{
 				if (execve(executable, stash.commands, NULL) == -1)
 				{
-					printerror(av, count, stash.input);
+					printerror(av, count, line);
 					_exit(0);
 				}
 			}
