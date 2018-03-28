@@ -44,11 +44,10 @@ int _atoi(char *s)
 }
 /**
  * __exit - built in exit function
- * @tokens: pointer to tokens
+ * @tokens: arg list
  * @line: input line
- * Return: -1
  */
-int __exit(char **tokens, char *line)
+int __exit(char **tokens)
 {
 	int i;
 
@@ -58,12 +57,10 @@ int __exit(char **tokens, char *line)
 		if (i > 0)
 		{
 			free2pointer(tokens);
-			free(line);
 			exit(i);
 		}
 		else
 		{
-			free(line);
 			free2pointer(tokens);
 			exit(0);
 		}
