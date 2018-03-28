@@ -17,7 +17,6 @@ void launch(char **av, free_t *stash, int count)
 		if (child_pid == -1)
 		{
 			perror("Child failed");
-			exit(0);
 		}
 		if (child_pid == 0)
 		{
@@ -34,7 +33,7 @@ void launch(char **av, free_t *stash, int count)
 		}
 		else
 		{
-			wait(NULL);
+			wait (NULL);
 		}
 	}
 	return;

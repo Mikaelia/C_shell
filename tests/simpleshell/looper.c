@@ -59,7 +59,6 @@ void looper(char **av)
 
 		count++;
 		free2pointer(stash.commands);
-		free(stash.executable);
 		free(stash.pathvar);
 
 
