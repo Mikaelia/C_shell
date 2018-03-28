@@ -2,8 +2,7 @@
 /**
   * checkbuiltins - checks input for builtins
   * @tokens: tokenized command
-  * @line: input line
-   * Return: -1 if not builtin, 1 if printenv, exit if exit
+  * Return: -1 if not builtin, 1 if printenv, exit if exit
   */
 int checkbuiltins(char **tokens)
 {

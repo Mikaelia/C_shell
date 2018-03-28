@@ -35,5 +35,4 @@ void launch(char **av, free_t *stash, int count)
 			wait(NULL);
 		}
 	}
-	return;
 }
