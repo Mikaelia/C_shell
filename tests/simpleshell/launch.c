@@ -29,13 +29,11 @@ void launch(char **av, free_t *stash, int count)
 					_exit(2);
 				}
 			}
-
 		}
 		else
 		{
 			wait (NULL);
 		}
 	}
-	free(stash->executable);
 	return;
 }

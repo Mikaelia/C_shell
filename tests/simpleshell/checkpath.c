@@ -3,7 +3,7 @@
 /**
   * checkpath - checks path for executable
   * @command: input command string
-  * Return: NULL if no match found, or executable file if founc
+  * Return: NULL if no match found, or executable file if found
   */
 char *checkpath(free_t *stash)
 {
