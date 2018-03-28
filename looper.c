@@ -18,6 +18,7 @@ void looper(char **av)
 {
 	char *input;
 	static int count = 1;
+	unsigned int interactive = 1;
 
 	free_t stash = {NULL, NULL, NULL, NULL, NULL};
 
@@ -27,6 +28,8 @@ void looper(char **av)
 
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
+	else
+		interactive = 0;
 
 	while (_prompt(&input, &stash))
 	{
@@ -51,6 +54,11 @@ void looper(char **av)
 		free(stash.pathvar);
 		free(stash.input);
 
-		write(STDOUT_FILENO, "$ ", 2);
+		if (interactive != 0)
+			write(STDOUT_FILENO, "$ ", 2);
+		stash.input = NULL;
 	}
+	if (interactive != 0)
+		write(STDOUT_FILENO, "\n", 1);
+	free(stash.input);
 }
