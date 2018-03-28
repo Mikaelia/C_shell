@@ -56,7 +56,7 @@ int tokenize(free_t *stash);
 void launch(char **av, free_t *stash, int count);
 
 /*checkfunctions*/
-int checkbuiltins(char **tokens);
+int checkbuiltins(free_t *stash);
 char *checkpath(free_t *stash);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *_findpath(char *);
@@ -66,6 +66,6 @@ tokenlist_t *tokentolist(tokenlist_t **head, char *token);
 tokenlist_t *pathsplitlist(char *path);
 
 /* builtins */
-int __exit(char **tokens);
+int __exit(free_t *stash);
 int printenviron(char **tokens);
 #endif

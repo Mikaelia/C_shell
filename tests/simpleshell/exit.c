@@ -47,21 +47,23 @@ int _atoi(char *s)
  * @tokens: arg list
  * @line: input line
  */
-int __exit(char **tokens)
+int __exit(free_t *stash)
 {
 	int i;
 
-	if (_strcmp(tokens[0], "exit") == 0)
+	if (_strcmp(stash->commands[0], "exit") == 0)
 	{
-		i = _atoi(tokens[1]);
+		i = _atoi(stash->commands[1]);
 		if (i > 0)
 		{
-			free2pointer(tokens);
+			free2pointer(stash->commands);
+			free(stash->input);
 			exit(i);
 		}
 		else
 		{
-			free2pointer(tokens);
+			free2pointer(stash->commands);
+			free(stash->input);
 			exit(0);
 		}
 	}

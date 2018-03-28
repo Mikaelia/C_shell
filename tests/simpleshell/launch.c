@@ -9,7 +9,7 @@ void launch(char **av, free_t *stash, int count)
 {
 	pid_t child_pid;
 
-	if (checkbuiltins(stash->commands) == -1)
+	if (checkbuiltins(stash) == -1)
 	{
 		checkpath(stash);
 
@@ -25,6 +25,7 @@ void launch(char **av, free_t *stash, int count)
 				if (execve(stash->executable, stash->commands, NULL) == -1)
 				{
 					printerror(av, count, stash->input);
+					free(stash->input);
 					_exit(2);
 				}
 			}
