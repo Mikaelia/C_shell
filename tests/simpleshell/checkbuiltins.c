@@ -1,13 +1,14 @@
 #include "holberton.h"
 /**
-  * checkbuiltins - checks input against builtins
-  * @tokens: token to check
+  * checkbuiltins - checks input for builtins
+  * @tokens: tokenized command
+  * @line: input line
   *
   * Return: -1 if not builtin, 1 if printenv, exit if exit
   */
-int checkbuiltins(char **tokens, char *line)
+int checkbuiltins(char **tokens)
 {
-	if (__exit(tokens, line) == -1)
+	if (__exit(tokens) == -1)
 	{
 		if (printenviron(tokens) == -1)
 			return (-1);
