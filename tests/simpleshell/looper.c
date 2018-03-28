@@ -40,7 +40,6 @@ void looper(char **av)
 	while (_prompt(&input, &stash))
 	{
 		flag = 1;
-		printf("%s", stash.input);
 
 		if (stash.input[0] == '\n')
 		{
@@ -60,6 +59,7 @@ void looper(char **av)
 		count++;
 		free2pointer(stash.commands);
 		free(stash.pathvar);
+		free(stash.input);
 
 
 		flag = 0;
@@ -68,5 +68,4 @@ void looper(char **av)
 	}
 	if (interactive == 0)
 		write(STDOUT_FILENO, "\n", 1);
-	free(stash.input);
 }

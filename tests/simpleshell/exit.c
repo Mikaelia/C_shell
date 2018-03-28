@@ -55,14 +55,14 @@ int __exit(char **tokens, char *line)
 		i = _atoi(tokens[1]);
 		if (i > 0)
 		{
-			free(tokens);
+			free2pointer(tokens);
 			free(line);
 			exit(i);
 		}
 		else
 		{
 			free(line);
-			free(tokens);
+			free2pointer(tokens);
 			exit(0);
 		}
 	}
