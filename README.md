@@ -35,23 +35,51 @@ Our shell includes the following files:
 
 |  **File**  |   **Description**   |
 | ------------ | --------------------- |
-| holberton.h  | Contains the C standard library header files, and struct and function declarations |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
+| holberton.h | Contains the C standard library header files, and struct and function declarations |
+| appendcmd.c | Creates a new buffer to hold node value and append user input |
+| checkbuiltins.c | Checks input for builtins |
+| checkpath.c | Checks path for executable |
+| exit.c | Exit builtin function |
+| findpathvar.c | Searchs for environmental variable string for the PATH name |
+| free2pointer.c | Frees a double pointer |
+| freelist.c | Frees the linked list |
+| helpers.c | String duplicate helper function |
+| launch.c | Forks the process and executes commands |
+| looper.c | Contiuous running loop of the shell |
+| pathtolinkedlist.c | Splits the path string into tokens, adds it to the linked list and returns the list  |
+| printenv.c | Prints the environment |
+| printerror.c | Prints error messages |
+| prompt.c | Reads the argument from standard input and returns a buffer string containining those arguments |
+| shellmain.c | Main function for the simple shell |
+| tokenize.c | Parses the input line into tokens |
+
 
 ### Description of Functions
 
 | **Function** | **Description** |
 | -------------- | ---------------- |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
+| void free2pointer(char **tokens) | Frees double pointer tokens |
+| void freelist(tokenlist_t *head) | Frees the linked list |
+| void free2list(char **) | Frees double pointer list  |
+| void sig_handler(int sig_handler) | Handles ctrl+c signal interruption |
+| char *_realloc(void *ptr, unsigned int, unsigned int) | Reallocates memory space |
+| int _strlen(char *) | Finds the length of a string |
+| int _strcmp(char *s1, char *s2) | Compares two strings |
+| void printerror(char **, int, char *) | Prints error messages |
+| char *_strdup(char *) | Duplicates a string |
+| void looper(char **) | Loops through the shell|
+| int _prompt(char **, free_t *stash) | Reads the line for the prompt|
+| int tokenize(free_t *stash) | Parses input line into tokens |
+| void launch(char **av, free_t *stash, int count) | Forks the process and executes commands |
+| int checkbuiltins(free_t *stash) | Checks input for builtins |
+| char *checkpath(free_t *stash) |  |
+| char *appendcmd(const tokenlist_t *pathlist, char *arg) |  |
+| char *findpath(void) | Finds the path variable in environmental variable array |
+| char **pathsplit(char*) | Splits the PATH string into tokens |
+| tokenlist_t *tokentolist(tokenlist_t **head, char *token) | Turns the path token and returns it to a linked list  |
+| tokenlist_t *pathsplitlist(char *path) | Turns token into a linked list  |
+| int __exit(free_t *stash) | Exits the shell |
+| int printenviron(char **tokens) | Prints the environment |
 
 ## Return Value
 This simple shell will exit with the status of 0 unless the status is otherwise specified.
