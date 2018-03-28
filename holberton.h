@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdarg.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -21,7 +20,14 @@ typedef struct tokenlist_t
 	char *token;
 	struct tokenlist_t *next;
 } tokenlist_t;
-
+/**
+  * struct free_t - struct that holds main shell variable values
+  * @commands: tokenized command input
+  * @token: command token
+  * @input: input line
+  * @executable: appended command to path var
+  * @pathvar: environmental PATH variable string
+  */
 typedef struct free_t
 {
 	char **commands;
@@ -40,15 +46,6 @@ void free2list(char **);
 /*global variables */
 
 extern char **environ;
-<<<<<<< HEAD
-void looper(char **argv);
-char *_prompt(void);
-char **tokenize(char *str);
-void *_realloc(void *ptr, unsigned int, unsigned int);
-int launch(char **av char **tokens);
-char *checkpath(char *command);
-=======
-unsigned int flag;
 
 /* helper functions */
 void sig_handler(int sig_handler);
@@ -67,23 +64,14 @@ void launch(char **av, free_t *stash, int count);
 /*checkfunctions*/
 int checkbuiltins(free_t *stash);
 char *checkpath(free_t *stash);
->>>>>>> origin/reset
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *_findpath(char *);
 char *findpath(void);
 char **pathsplit(char*);
 tokenlist_t *tokentolist(tokenlist_t **head, char *token);
 tokenlist_t *pathsplitlist(char *path);
-<<<<<<< HEAD
-void freelist(tokenlist_t *head);
-int statcommand(char *exec);
-void escape(char **argv);
-int printenviron(char **argv);
-void printerror(char **, static int, char **);
-=======
 
 /* builtins */
 int __exit(free_t *stash);
 int printenviron(char **tokens);
->>>>>>> origin/reset
 #endif

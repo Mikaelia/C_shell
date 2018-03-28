@@ -1,17 +1,10 @@
 #include "holberton.h"
 
 /**
-<<<<<<< HEAD
- * checkpath - checks path for executable
- * @command: input command string
- * Return: NULL if no match found, or executable file if founc
- */
-=======
   * checkpath - checks path for executable
   * @stash: pointer to main program values
   * Return: NULL if no match found, or executable file if found
   */
->>>>>>> origin
 char *checkpath(free_t *stash)
 {
 	tokenlist_t *pathlist;

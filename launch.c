@@ -29,7 +29,6 @@ void launch(char **av, free_t *stash, int count)
 					free(stash->input);
 					_exit(2);
 				}
-
 			}
 		}
 		else
@@ -37,5 +36,4 @@ void launch(char **av, free_t *stash, int count)
 			wait(NULL);
 		}
 	}
-
 }

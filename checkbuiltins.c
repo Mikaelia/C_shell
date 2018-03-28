@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
   * checkbuiltins - checks input for builtins
-  * @tokens: tokenized command
+  * @stash: variable struct
   * Return: -1 if not builtin, 1 if printenv, exit if exit
   */
 int checkbuiltins(free_t *stash)
