@@ -41,7 +41,7 @@ char *_realloc(void *ptr, unsigned int original, unsigned int resized)
 }
 /**
   * tokenize - parses input line into tokens
-  * @str: str is our string we will be separating into tokens
+  * @stash: stash is our string we will be separating into tokens
   *
   * Return: Array of each word of string
   */
@@ -70,7 +70,9 @@ int tokenize(free_t *stash)
 		if (i >= bufsize)
 		{
 			newsize = bufsize + 5;
-			newbuf = _realloc(stash->commands, bufsize * sizeof(char *), newsize* sizeof(char *));
+			newbuf = _realloc(stash->commands,
+					  bufsize * sizeof(char *),
+					  newsize * sizeof(char *));
 			if (!newbuf)
 			{
 				free2pointer(stash->commands);
