@@ -6,21 +6,19 @@
   */
 int _strlen(char *string)
 {
-	int count;
+	int i;
 
 	if (string == NULL)
 	{
 		return (0);
 	}
-
-	count = 0;
-	while (string != NULL)
+	i = 0;
+	while (string[i] != '\0')
 	{
-		count++;
-		string++;
+		i++;
 	}
-	count++;
-	return (count);
+	i++;
+	return (i);
 }
 /**
   * appendcmd - creates new buf to hold nodeval + user input
@@ -39,10 +37,15 @@ char *appendcmd(const tokenlist_t *h, char *command)
 	j = 0;
 	token = h->token;
 
+	if (h == NULL)
+		return (NULL);
+	if (command == NULL)
+		return (NULL);
+
 	sum += strlen(token);
 	sum += strlen(command);
 
-	new = malloc(sizeof(char) * sum);
+	new = malloc(sizeof(char) * sum + 2);
 	if (new == NULL)
 	{
 		return (NULL);

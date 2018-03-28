@@ -1,48 +1,24 @@
 #include "holberton.h"
-
-/**
- * _strcmp_env - compares two strings
- *
- * @s1: string 1
- * @s2: string 2
- *
- * Return: s1 - s2 or 0
- */
-
-int _strcmp_env(char *s1, char *s2)
-{
-	while (*s1 != '\0' || *s2 != '\0')
-	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		s1++;
-		s2++;
-	}
-	return (0);
-}
-
 /**
 * printenviron - prints environment
 * @argv: input variable
 * Return 1 if success or 0 if fails
 **/
-
-int printenviron(char **argv)
+int printenviron(char **tokens)
 {
-	char env[] = "env";
-	int i = 0;
+	int i;
 
-	if (_strcmp_env(argv[0], env) == 0)
+	i = 0;
+
+	if (_strcmp(tokens[0], "env") == 0)
 	{
 		while(environ[i] != NULL)
 		{
-			/*write(STDOUT_FILENO, environ[i], _strlen(environ[i])-1);
-			write(STDOUT_FILENO, "\n", 1);
-			i++;*/
-//			printf("%s\n", environ[i++]);
+			write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
+			write(STDOUT_FILENO, "\n", 2);
+			i++;
 		}
 		return (1);
 	}
-	else
-		return (0);
+	return (-1);
 }

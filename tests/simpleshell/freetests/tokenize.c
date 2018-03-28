@@ -6,7 +6,7 @@
  * @resized: resized  memory space
  * Return: NULL or string
  */
-char *_realloc(void *ptr, unsigned int original, unsigned int resized)
+void *_realloc(void *ptr, unsigned int original, unsigned int resized)
 {
 	char *newbuf;
 	void *vptr;
@@ -33,10 +33,7 @@ char *_realloc(void *ptr, unsigned int original, unsigned int resized)
 		for (i = 0; i < original; i++)
 			newbuf[i] = tmp[i];
 	}
-	free(ptr);
-	free(tmp);
 	vptr = newbuf;
-	free(newbuf);
 	return (vptr);
 }
 /**
@@ -45,41 +42,41 @@ char *_realloc(void *ptr, unsigned int original, unsigned int resized)
   *
   * Return: Array of each word of string
   */
-int tokenize(free_t *stash)
+char **tokenize(char *str)
 {
+	char **tokens;
+	char *token;
 	int i;
 	const char *deliminator  = " \t\r\n\a";
 	int bufsize = 20;
-	int newsize;
-	char *newbuf;
+	int new;
 
-	stash->commands = malloc(sizeof(char *) * bufsize);
+	tokens = malloc(sizeof(char *) * bufsize);
+	if (!tokens)
+	{
+		return (NULL);
+	}
 
-	stash->token = _strdup(strtok(stash->input, deliminator));
-	if (!stash->token)
+	token = strtok(str, deliminator);
+	if (!token)
 	{
 		write(STDOUT_FILENO, "\n", 1);
-		free(stash->commands);
-		return (0);
+		exit(0);
 	}
 	i = 0;
-	while (stash->token != NULL)
+	while (token != NULL)
 	{
-		stash->commands[i] = stash->token;
+		tokens[i] = token;
 		i++;
 		if (i >= bufsize)
 		{
-			newsize = bufsize + 5;
-			newbuf = _realloc(stash->commands, bufsize * sizeof(char *), newsize* sizeof(char *));
-			if (!newbuf)
-			{
-				free2pointer(stash->commands);
-				perror("REALLOC FAIL");
-				return (0);
-			}
+			new = bufsize + 5;
+			tokens = _realloc(tokens, bufsize * sizeof(char *), new * sizeof(char *));
+			if (!tokens)
+				return (NULL);
 		}
-		stash->token = _strdup(strtok(NULL, deliminator));
+		token = strtok(NULL, deliminator);
 	}
-	stash->commands[i] = '\0';
-	return (1);
+	tokens[i] = '\0';
+	return (tokens);
 }

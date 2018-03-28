@@ -1,22 +1,25 @@
 .TH man 1 "15 March 2018" "1.00" "simple_shell man page"
 .SH NAME
-.B simple_shell
+.B simple_shell - this is a simple unix command line interpreter.
 .SH SYNOPSIS
-
+This is a simple shell program that was created for Holberton School, a project-based alternative to college for the next generation of software engineers.
 .SH DESCRIPTION
-This is a simple shell program created for Holberton School, which is a project-based alternative to college for the next generation of software engineers.
+This simple shell can read, interpret, and execute commands. Once the commands are executed it will free up any memory and terminate.
 
+.SH BUILT-INS
+
+.B env -
+Print the current environment.
+
+.B exit -
+Exit from hsh simple shell.
 
 .SH RETURN VALUE
-
-
-.SH CONVERSION SPECIFIERS
-
+hsh will exit with the status of 0 unless the status is otherwise specified.
 
 .SH SEE ALSO
-.I peerlearning(2), projectbased(2), fullstack(2), shell(3),
+.I peerlearning(2), projectbased(2), fullstack(2), shell(3)
 .SH BUGS
-Other features are still pending...
+No known bugs.
 .SH AUTHOR
 Germaine Balmania, Mikaela Gurney, and Victor Nguyen
- 2018

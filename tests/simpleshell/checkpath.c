@@ -1,35 +1,38 @@
 #include "holberton.h"
 
 /**
-  * checkpath - checks path for executable
-  * @command: input command string
-  * Return: NULL if no match found, or executable file if founc
-  */
-char *checkpath(char *command)
+ * checkpath - checks path for executable
+ * @command: input command string
+ * Return: NULL if no match found, or executable file if founc
+ */
+char *checkpath(free_t *stash)
 {
-	char *executable;
-	char *pathvar;
 	tokenlist_t *pathlist;
 	struct stat st;
 
-	if (command == NULL)
+	if (stash->commands[0] == NULL)
 	{
-		printf("No Command");
 		return (NULL);
 	}
 
-	pathvar = findpath();
-	pathlist = pathsplitlist(pathvar);
+	stash->pathvar = _strdup(findpath());
+	if (stash->pathvar == NULL)
+	{
+		return (NULL);
+	}
+	pathlist = pathsplitlist(stash->pathvar);
 	while (pathlist)
 	{
-		executable = appendcmd(pathlist, command);
-		if (stat(executable, &st) < 0)
+		stash->executable = _strdup(appendcmd(pathlist, stash->commands[0]));
+		printf("THIS IS THE EXEC: %s\n", stash->executable);
+		if (stat(stash->executable, &st) < 0)
 		{
+			free(stash->executable);
 			pathlist = pathlist->next;
 		}
-		else if (stat(executable, &st) == 0)
-			return (executable);
+		else
+			break;
 	}
-	perror("Error: ");
-	exit(90);
+	freelist(pathlist);
+	return(NULL);
 }
