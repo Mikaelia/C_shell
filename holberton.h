@@ -22,11 +22,11 @@ typedef struct tokenlist_t
 } tokenlist_t;
 /**
   * struct free_t - struct that holds main shell variable values
-  * @ commands: tokenized command input
-  * @ token: command token
-  * @ input: input line
-  * @ executable: appended command to path var
-  * @ environmental PATH variable string
+  * @commands: tokenized command input
+  * @token: command token
+  * @input: input line
+  * @executable: appended command to path var
+  * @pathvar: environmental PATH variable string
   */
 typedef struct free_t
 {
@@ -46,7 +46,6 @@ void free2list(char **);
 /*global variables */
 
 extern char **environ;
-unsigned int flag;
 
 /* helper functions */
 void sig_handler(int sig_handler);

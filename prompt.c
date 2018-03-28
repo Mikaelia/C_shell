@@ -11,8 +11,8 @@ int _prompt(char **line, free_t *stash)
 
 	if (getline(line, &bufsize, stdin) == -1)
 	{
-		write (STDOUT_FILENO, "\n", 1);
-		exit (0);
+		write(STDOUT_FILENO, "\n", 1);
+		exit(0);
 	}
 	stash->input = *line;
 	return (1);

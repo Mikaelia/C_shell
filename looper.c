@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * sig_handler - handles ctrl + c signal interruption
- * @sig_handler: signal recieved - unused
+ * @sigint: signal recieved - unused
  * Return: void
  */
 void sig_handler(int sigint)
@@ -20,6 +20,7 @@ void looper(char **av)
 	static int count = 1;
 
 	free_t stash = {NULL, NULL, NULL, NULL, NULL};
+
 	input = NULL;
 
 	signal(SIGINT, sig_handler);

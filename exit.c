@@ -44,7 +44,7 @@ int _atoi(char *s)
 }
 /**
  * __exit - built in exit function
- * @tokens: tokenized arg list
+ * @stash: program variable structure
  * Return: -1
  */
 int __exit(free_t *stash)
