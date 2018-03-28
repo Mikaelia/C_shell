@@ -2,7 +2,7 @@
 
 /**
   * checkpath - checks path for executable
-  * @command: input command string
+  * @stash: pointer to main program values
   * Return: NULL if no match found, or executable file if founc
   */
 char *checkpath(free_t *stash)

@@ -1,10 +1,8 @@
 #include "holberton.h"
 /**
   * _itos - converts integer to string
-  *
-  *
-  *
-  *
+  * @num: input number
+  * Return: string of integer
   */
 char *_itos(int num)
 {
@@ -51,8 +49,7 @@ char *_itos(int num)
 
 /**
   * _len - finds length of string
-  * @str - input string
-  *
+  * @str: input string
   * Return: length of string
   */
 int _len(char *str)
@@ -69,9 +66,8 @@ int _len(char *str)
 /**
   * printerror - prints error message
   * @arg: main argument list
-  * @arc: number of arguments executed
+  * @count: number of arguments executed
   * @line: input from prompt
-  *
   * Return: void
   */
 void printerror(char **arg, int count, char *line)

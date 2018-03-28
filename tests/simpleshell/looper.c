@@ -15,10 +15,8 @@ void sig_handler(int sig_handler)
 }
 /**
   * looper - continuous shell loop
-  *
-  *
-  *
-  *
+  * @av: argument variables
+  * Return: nothing
   */
 void looper(char **av)
 {
@@ -47,7 +45,7 @@ void looper(char **av)
 			continue;
 		}
 
-		if(!(tokenize(&stash)))
+		if (!(tokenize(&stash)))
 		{
 			perror("tokenize fail");
 			free(stash.input);

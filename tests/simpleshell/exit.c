@@ -27,7 +27,7 @@ int _atoi(char *s)
 	int sum = 0;
 
 	if (s == NULL)
-		return(-1);
+		return (-1);
 
 	while (*s != '\0')
 	{
@@ -44,7 +44,9 @@ int _atoi(char *s)
 }
 /**
  * __exit - built in exit function
- * @tokens: arg list
+ * @tokens: pointer to tokens
+ * @line: input line
+ * Return: -1
  */
 int __exit(char **tokens, char *line)
 {
