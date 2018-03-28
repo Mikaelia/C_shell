@@ -4,15 +4,13 @@
   * @line: pointer to line
   * Return: buffer containing command line arguments
   */
-int _prompt(char **line)
+int _prompt(char **line, free_t *stash)
 {
-	int s;
 	size_t bufsize = 0;
-	s = getline(line, &bufsize, stdin); /*stores address of buffer w args*/
-	if (s == -1)
+	if (getline(line, &bufsize, stdin) == -1)
 	{
-		free(line);
 		return (0);
 	}
-	return (s);
+	stash->input = *line;
+	return (1);
 }

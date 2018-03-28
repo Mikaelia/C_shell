@@ -23,11 +23,10 @@ void sig_handler(int sig_handler)
 void looper(char **av)
 {
 	char *input;
-	int status;
 	unsigned int interactive = 0;
 	static int count = 1;
 
-	free_t stash = {NULL, NULL, NULL, NULL};
+	free_t stash = {NULL, NULL, NULL, NULL, NULL};
 
 	signal(SIGINT, sig_handler);
 
@@ -36,39 +35,37 @@ void looper(char **av)
 	if (interactive == 0)
 		write(STDOUT_FILENO, "$ ", 2);
 	flag = 0;
-	do {
+	input = NULL;
+
+	while (_prompt(&input, &stash))
+	{
 		flag = 1;
-		status = 0;
-		input = NULL;
-
-		_prompt(&input);
-
-
-		if (input == NULL)
+		printf("%s", stash.input);
+		if (stash.input[0] == '\n')
 		{
-			perror("getline fail");
-			exit(1);
+			write(STDOUT_FILENO, "$ ", 2);
+			continue;
 		}
-		stash.commands = tokenize(stash.input);		/*splits input into tokens*/
-		if (!stash.commands)
+
+		if(!(tokenize(&stash)))
 		{
 			perror("tokenize fail");
-			exit(1);
+			free(stash.input);
+			continue;
 		}
-		status = launch(av, stash, count);	/*executes tokens*/
-		if (status != 1)
-		{
-			status = -1;
-		}
+
+		launch(av, &stash, count);
+
 		count++;
 		free2pointer(stash.commands);
-		free(stash.input);
+		free(stash.executable);
+		free(stash.pathvar);
+
 
 		flag = 0;
 		if (interactive == 0)
 			write(STDOUT_FILENO, "$ ", 2);
-
-	} while (status);
+	}
 	if (interactive == 0)
 		write(STDOUT_FILENO, "\n", 1);
 	free(stash.input);

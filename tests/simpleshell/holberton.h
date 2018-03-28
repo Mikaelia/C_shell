@@ -27,35 +27,45 @@ typedef struct free_t
 	char *token;
 	char *input;
 	char *executable;
+	char *pathvar;
 } free_t;
+
+/* free functions */
 
 void free2pointer(char **tokens);
 void freelist(tokenlist_t *head);
+void free2list(char **);
+
+/*global variables */
 
 extern char **environ;
 unsigned int flag;
 
+/* helper functions */
 void sig_handler(int sig_handler);
+char *_realloc(void *ptr, unsigned int, unsigned int);
+int _strlen(char *);
+int _strcmp(char *s1, char *s2);
+void printerror(char **, int, char *);
+char *_strdup(char *);
+
+/* main functions */
 void looper(char **);
-int _prompt(char **);
-char **tokenize(char *str);
-void *_realloc(void *ptr, unsigned int, unsigned int);
-int launch(char **av, free_t stash, int count);
+int _prompt(char **, free_t *stash);
+int tokenize(free_t *stash);
+void launch(char **av, free_t *stash, int count);
+
 /*checkfunctions*/
 int checkbuiltins(char **tokens, char *line);
-char *checkpath(free_t stash);
+char *checkpath(free_t *stash);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *_findpath(char *);
 char *findpath(void);
 char **pathsplit(char*);
-int _strlen(char *);
-int _strcmp(char *s1, char *s2);
 tokenlist_t *tokentolist(tokenlist_t **head, char *token);
 tokenlist_t *pathsplitlist(char *path);
-int statcommand(char *exec);
+
+/* builtins */
 int __exit(char **tokens, char *line);
 int printenviron(char **tokens);
-void printerror(char **, int, char *);
-char *_strdup(char *);
-void free2list(char **);
 #endif
