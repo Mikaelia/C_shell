@@ -42,8 +42,8 @@ char *appendcmd(const tokenlist_t *h, char *command)
 	if (command == NULL)
 		return (NULL);
 
-	sum += strlen(token);
-	sum += strlen(command);
+	sum += _strlen(token);
+	sum += _strlen(command);
 
 	new = malloc((sizeof(char) * sum) + 2);
 	if (new == NULL)
