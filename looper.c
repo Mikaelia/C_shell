@@ -1,15 +1,13 @@
 #include "holberton.h"
 /**
  * sig_handler - handles ctrl + c signal interruption
- * @sigint: signal recieved
+ * @sig_handler: signal recieved - unused
  * Return: void
  */
 void sig_handler(int sigint)
 {
 	if (sigint == SIGINT)
 		write(STDOUT_FILENO, "\n$ ", 3);
-	else
-		write(STDOUT_FILENO, "\n", 1);
 }
 /**
   * looper - continuous shell loop
@@ -22,7 +20,6 @@ void looper(char **av)
 	static int count = 1;
 
 	free_t stash = {NULL, NULL, NULL, NULL, NULL};
-
 	input = NULL;
 
 	signal(SIGINT, sig_handler);
@@ -32,8 +29,6 @@ void looper(char **av)
 
 	while (_prompt(&input, &stash))
 	{
-		flag = 1;
-
 		if (stash.input[0] == '\n')
 		{
 			write(STDOUT_FILENO, "$ ", 2);
