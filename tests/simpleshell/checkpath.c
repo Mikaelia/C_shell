@@ -24,11 +24,14 @@ char *checkpath(free_t *stash)
 	while (pathlist)
 	{
 		stash->executable = _strdup(appendcmd(pathlist, stash->commands[0]));
+		printf("THIS IS THE EXEC: %s\n", stash->executable);
 		if (stat(stash->executable, &st) < 0)
 		{
 			free(stash->executable);
 			pathlist = pathlist->next;
 		}
+		else
+			break;
 	}
 	freelist(pathlist);
 	return (NULL);
