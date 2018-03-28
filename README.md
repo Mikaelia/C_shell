@@ -12,12 +12,12 @@ This shell was built and tested in an Ubuntu 14.04 LTS using vagrant in VirtualB
 ## How to Install
 Clone this repository and compile the files into an executable using the GCC compiler.
 ```
-https://github.com/
+https://github.com/Mikaelia/simple_shell
 ```
 All files need to be compiled on an Ubuntu 14.04 LTS machine using:
-6```
+```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
-6```
+```
 
 ## Usage
 After compilation you can start the program by running the command:
@@ -86,9 +86,31 @@ This simple shell will exit with the status of 0 unless the status is otherwise 
 
 ### Example Code
 ```
-
+vagrant:simple_shell$ ./hsh
+$ ls -l
+total 116
+-rw-rw-r-- 1 vagrant vagrant   241 Mar 18 22:00 AUTHORS
+-rw-rw-r-- 1 vagrant vagrant  4087 Mar 28 21:12 README.md
+-rw-rw-r-- 1 vagrant vagrant  1020 Mar 28 21:09 appendcmd.c
+-rw-rw-r-- 1 vagrant vagrant   307 Mar 28 21:09 checkbuiltins.c
+-rw-rw-r-- 1 vagrant vagrant   707 Mar 28 18:55 checkpath.c
+-rw-rw-r-- 1 vagrant vagrant   990 Mar 28 21:09 exit.c
+-rw-rw-r-- 1 vagrant vagrant   870 Mar 28 18:55 findpathvar.c
+-rw-rw-r-- 1 vagrant vagrant   245 Mar 28 18:55 free2pointer.c
+-rw-rw-r-- 1 vagrant vagrant   282 Mar 28 18:55 freelist.c
+-rw-rw-r-- 1 vagrant vagrant   443 Mar 28 18:55 helpers.c
+-rw-rw-r-- 1 vagrant vagrant  1747 Mar 28 21:09 holberton.h
+-rwxrwxr-x 1 vagrant vagrant 32434 Mar 28 21:09 hsh
+-rw-rw-r-- 1 vagrant vagrant   717 Mar 28 18:55 launch.c
+-rw-rw-r-- 1 vagrant vagrant   940 Mar 28 21:09 looper.c
+-rw-rw-r-- 1 vagrant vagrant   803 Mar 28 18:06 man_simple_shell
+-rw-rw-r-- 1 vagrant vagrant  1363 Mar 28 21:09 pathtolinkedlist.c
+-rw-rw-r-- 1 vagrant vagrant   395 Mar 28 18:55 printenv.c
+-rw-rw-r-- 1 vagrant vagrant  1391 Mar 28 18:55 printerror.c
+-rw-rw-r-- 1 vagrant vagrant   389 Mar 28 21:09 prompt.c
+-rw-rw-r-- 1 vagrant vagrant   257 Mar 28 18:55 shellmain.c
+-rw-rw-r-- 1 vagrant vagrant  1650 Mar 28 18:55 tokenize.c
 ```
-
 
 ### Notes
 Other features are will be implemented in the future.
