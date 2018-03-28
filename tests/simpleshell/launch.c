@@ -1,7 +1,9 @@
 #include "holberton.h"
 /**
   * launch - forks process and executes commands
-  * @argv: arg passed from stdin
+  * @stash: struct of pointers
+  * @av: argument variables passed from stdin
+  * @count: count of executed commands
   *
   * Return: 0
  */
@@ -12,7 +14,6 @@ void launch(char **av, free_t *stash, int count)
 	if (checkbuiltins(stash) == -1)
 	{
 		checkpath(stash);
-
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -32,8 +33,7 @@ void launch(char **av, free_t *stash, int count)
 		}
 		else
 		{
-			wait (NULL);
+			wait(NULL);
 		}
 	}
-	return;
 }

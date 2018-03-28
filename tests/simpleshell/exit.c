@@ -44,8 +44,8 @@ int _atoi(char *s)
 }
 /**
  * __exit - built in exit function
- * @tokens: arg list
- * @line: input line
+ * @tokens: tokenized arg list
+ * Return: -1
  */
 int __exit(free_t *stash)
 {

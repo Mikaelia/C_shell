@@ -5,7 +5,7 @@
  *
  * Return: 1 on match, -1 if no match found
  */
-char * _findpath(char *envar)
+char *_findpath(char *envar)
 {
 	char *path = "PATH=";
 
@@ -27,7 +27,6 @@ char * _findpath(char *envar)
 }
 /**
   * findpath - finds the path variable in environmental variable array
-  * @env: environmental variable array
   *
   * Return: Pointer to path variable string, or NULL pointer on fail
   */
