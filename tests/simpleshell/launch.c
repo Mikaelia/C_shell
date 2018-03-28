@@ -5,17 +5,13 @@
   *
   * Return: 0
  */
-int launch(char **av, free_t *stash, int count)
+void launch(char **av, free_t *stash, int count)
 {
 	pid_t child_pid;
 
 	if (checkbuiltins(stash->commands, stash->input) == -1)
 	{
-		if (checkpath(stash) == NULL)
-		{
-			perror("no path match was found");
-
-		}
+		checkpath(stash);
 
 		child_pid = fork();
 		if (child_pid == -1)
@@ -29,8 +25,9 @@ int launch(char **av, free_t *stash, int count)
 			{
 				if (execve(stash->executable, stash->commands, NULL) == -1)
 				{
+					perror("EXECUTE ERROR");
 					printerror(av, count, stash->input);
-					_exit(0);
+					_exit(2);
 				}
 			}
 
@@ -40,5 +37,5 @@ int launch(char **av, free_t *stash, int count)
 			wait(NULL);
 		}
 	}
-	return (1);
+	return;
 }

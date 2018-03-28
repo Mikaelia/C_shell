@@ -29,9 +29,7 @@ char *checkpath(free_t *stash)
 			free(stash->executable);
 			pathlist = pathlist->next;
 		}
-		else if (stat(stash->executable, &st) == 0)
-			return (stash->executable);
 	}
 	freelist(pathlist);
-	return (NULL);
+	return(NULL);
 }

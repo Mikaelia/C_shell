@@ -43,7 +43,7 @@ unsigned int flag;
 
 /* helper functions */
 void sig_handler(int sig_handler);
-void *_realloc(void *ptr, unsigned int, unsigned int);
+char *_realloc(void *ptr, unsigned int, unsigned int);
 int _strlen(char *);
 int _strcmp(char *s1, char *s2);
 void printerror(char **, int, char *);
@@ -51,9 +51,9 @@ char *_strdup(char *);
 
 /* main functions */
 void looper(char **);
-int _prompt(char **);
-void tokenize(free_t *stash);
-int launch(char **av, free_t *stash, int count);
+int _prompt(char **, free_t *stash);
+int tokenize(free_t *stash);
+void launch(char **av, free_t *stash, int count);
 
 /*checkfunctions*/
 int checkbuiltins(char **tokens, char *line);

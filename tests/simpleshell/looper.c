@@ -23,7 +23,6 @@ void sig_handler(int sig_handler)
 void looper(char **av)
 {
 	char *input;
-	int status;
 	unsigned int interactive = 0;
 	static int count = 1;
 
@@ -38,34 +37,28 @@ void looper(char **av)
 	flag = 0;
 	input = NULL;
 
-	while (_prompt(&input))
+	while (_prompt(&input, &stash))
 	{
 		flag = 1;
+		printf("%s", stash.input);
 
-		stash.input = input;
 		if (stash.input[0] == '\n')
 		{
 			write(STDOUT_FILENO, "$ ", 2);
 			continue;
 		}
 
-		tokenize(&stash);
-		if (!stash.commands)
+		if(!(tokenize(&stash)))
 		{
 			perror("tokenize fail");
-			exit(1);
+			free(stash.input);
+			continue;
 		}
 
-		status = launch(av, &stash, count);
-		if (status != 1)
-		{
-			status = -1;
-		}
+		launch(av, &stash, count);
 
 		count++;
 		free2pointer(stash.commands);
-		free(stash.input);
-		free(stash.token);
 		free(stash.executable);
 		free(stash.pathvar);
 
