@@ -51,7 +51,7 @@ tokenlist_t *pathsplitlist(char *path)
 
 	if (!path)
 	{
-		printf("NULL PATH STRING");
+		perror("NULL PATH STRING");
 		return (NULL);
 	}
 	while (path[i] != '\0')
@@ -63,7 +63,7 @@ tokenlist_t *pathsplitlist(char *path)
 	pathtoken = strtok(path, deliminator);
 	if (!pathtoken)
 	{
-		printf("TOKEN FAIL");
+		perror("TOKEN FAIL");
 		return (NULL);
 	}
 	while (pathtoken != NULL)
