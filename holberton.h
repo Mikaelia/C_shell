@@ -63,7 +63,7 @@ void launch(char **av, free_t *stash, int count);
 
 /*checkfunctions*/
 int checkbuiltins(free_t *stash);
-char *checkpath(free_t *stash);
+tokenlist_t *checkpath(free_t *stash);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *findpath(void);
 char **pathsplit(char*);

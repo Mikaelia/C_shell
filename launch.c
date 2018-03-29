@@ -13,7 +13,10 @@ void launch(char **av, free_t *stash, int count)
 
 	if (checkbuiltins(stash) == -1)
 	{
-		checkpath(stash);
+		if (checkpath(stash) == NULL)
+		{
+			stash->executable = NULL;
+		}
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -23,12 +26,13 @@ void launch(char **av, free_t *stash, int count)
 		{
 			if (execve(stash->commands[0], stash->commands, NULL) == -1)
 			{
-				if (execve(stash->executable, stash->commands, NULL) == -1)
+				if (stash->executable != NULL)
 				{
-					printerror(av, count, stash->input);
-					free(stash->input);
-					_exit(2);
+					execve(stash->executable, stash->commands, NULL);
 				}
+				printerror(av, count, stash->input);
+				free(stash->input);
+				_exit(2);
 			}
 		}
 		else

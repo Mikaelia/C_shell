@@ -5,7 +5,7 @@
   * @stash: pointer to main program values
   * Return: NULL if no match found, or executable file if found
   */
-char *checkpath(free_t *stash)
+tokenlist_t *checkpath(free_t *stash)
 {
 	tokenlist_t *pathlist, *head;
 	struct stat st;
@@ -42,5 +42,5 @@ char *checkpath(free_t *stash)
 			break;
 	}
 	freelist(head);
-	return (NULL);
+	return (pathlist);
 }
