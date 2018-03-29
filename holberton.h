@@ -65,7 +65,6 @@ void launch(char **av, free_t *stash, int count);
 int checkbuiltins(free_t *stash);
 char *checkpath(free_t *stash);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
-char *_findpath(char *);
 char *findpath(void);
 char **pathsplit(char*);
 tokenlist_t *tokentolist(tokenlist_t **head, char *token);
