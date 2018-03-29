@@ -67,7 +67,7 @@ char *checkpath(free_t *stash);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *findpath(void);
 char **pathsplit(char*);
-tokenlist_t *tokentolist(tokenlist_t **head, char *token);
+void tokentolist(tokenlist_t **head, char *token);
 tokenlist_t *pathsplitlist(char *path);
 
 /* builtins */

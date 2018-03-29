@@ -7,7 +7,7 @@
   */
 char *checkpath(free_t *stash)
 {
-	tokenlist_t *pathlist;
+	tokenlist_t *pathlist, *head;
 	struct stat st;
 	char *temp;
 
@@ -22,6 +22,7 @@ char *checkpath(free_t *stash)
 		return (NULL);
 	}
 	pathlist = pathsplitlist(stash->pathvar);
+	head = pathlist;
 	while (pathlist)
 	{
 		temp = appendcmd(pathlist, stash->commands[0]);
@@ -29,7 +30,7 @@ char *checkpath(free_t *stash)
 		free(temp);
 		if (stash->executable == NULL)
 		{
-			freelist(pathlist);
+			freelist(head);
 			return (NULL);
 		}
 		if (stat(stash->executable, &st) < 0)
@@ -40,6 +41,6 @@ char *checkpath(free_t *stash)
 		else
 			break;
 	}
-	freelist(pathlist);
+	freelist(head);
 	return (NULL);
 }

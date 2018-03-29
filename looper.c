@@ -53,6 +53,7 @@ void looper(char **av)
 		free2pointer(stash.commands);
 		free(stash.pathvar);
 		free(stash.input);
+		free(stash.executable);
 
 		if (interactive != 0)
 			write(STDOUT_FILENO, "$ ", 2);

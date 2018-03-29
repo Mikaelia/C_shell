@@ -17,6 +17,7 @@ void freelist(tokenlist_t *head)
 		tmp = head;
 		head = head->next;
 		free(tmp);
+		tmp = NULL;
 	}
 	free(head);
 }

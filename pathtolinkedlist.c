@@ -6,17 +6,17 @@
   *
   * Return: pointer to the linked list head, NULL on fail
   */
-tokenlist_t *tokentolist(tokenlist_t **head, char *token)
+void tokentolist(tokenlist_t **head, char *token)
 {
 	tokenlist_t *new;
 	tokenlist_t *temp;
 
 	if (head == NULL)
-		return (NULL);
+		return;
 
 	new = malloc(sizeof(tokenlist_t));
 	if (new == NULL)
-		return (NULL);
+		return;
 
 	if (*head == NULL)
 		*head = new;
@@ -29,7 +29,6 @@ tokenlist_t *tokentolist(tokenlist_t **head, char *token)
 	}
 	new->token = token;
 	new->next = NULL;
-	return (new);
 }
 /**
   * pathsplitlist - splits path string into tokens, returns linked list
