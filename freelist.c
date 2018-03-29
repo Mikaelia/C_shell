@@ -18,4 +18,5 @@ void freelist(tokenlist_t *head)
 		head = head->next;
 		free(tmp);
 	}
+	free(head);
 }
