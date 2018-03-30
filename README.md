@@ -72,11 +72,11 @@ Our shell includes the following files:
 | int tokenize(free_t *stash) | Parses input line into tokens |
 | void launch(char **av, free_t *stash, int count) | Forks the process and executes commands |
 | int checkbuiltins(free_t *stash) | Checks input for builtins |
-| char *checkpath(free_t *stash) |  |
-| char *appendcmd(const tokenlist_t *pathlist, char *arg) |  |
+| char *checkpath(free_t *stash) | Checks the path for the executable |
+| char *appendcmd(const tokenlist_t *pathlist, char *arg) | Creates a new buffer and appends user input |
 | char *findpath(void) | Finds the path variable in environmental variable array |
 | char **pathsplit(char*) | Splits the PATH string into tokens |
-| tokenlist_t *tokentolist(tokenlist_t **head, char *token) | Turns the path token and returns it to a linked list  |
+|void  tokenlist_t *tokentolist(tokenlist_t **head, char *token) | Turns the path token and returns it to a linked list  |
 | tokenlist_t *pathsplitlist(char *path) | Turns token into a linked list  |
 | int __exit(free_t *stash) | Exits the shell |
 | int printenviron(char **tokens) | Prints the environment |
