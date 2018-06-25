@@ -1,37 +1,36 @@
 # Simple Shell Project
 
 ## Synopsis
-This is a simple shell recreation of a UNIX command line interpreter.
+A simplified recreation of the UNIX shell
 
 ## Description
-This simple shell can read, interpret, and execute commands. Once the commands are executed it will free up any memory and terminate.
+This simple shell can read, interpret, and execute commands. Once the commands are executed, allocated memory is freed.
 
 ## Environment
-This shell was built and tested in an Ubuntu 14.04 LTS using vagrant in VirtualBox.
+Built and tested with Ubuntu 14.04 LTS
 
 ## How to Install
-Clone this repository and compile the files into an executable using the GCC compiler.
+Clone this repository and compile the files using gcc:
 ```
 https://github.com/Mikaelia/simple_shell
 ```
-All files need to be compiled on an Ubuntu 14.04 LTS machine using:
+All files compiled with the flags:
 ```
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
 
 ## Usage
-After compilation you can start the program by running the command:
+After compilation, the program initialized by running the executable:
 ```./hsh```
 
-You can also use most shell commands like: ```ls -la```, ```pwd```,  ```cat``` etc.
+Test out commands: ```ls -la```, ```pwd```,  ```cat``` etc.
 
 ## Built-Ins
-This simple shell supports the following built in commands:
+This shell supports the following built-in commands:
 + ```env``` - Print the current environment
 + ```exit``` - Exit out of the shell
 
 ### Repository Contents
-Our shell includes the following files:
 
 |  **File**  |   **Description**   |
 | ------------ | --------------------- |
@@ -82,7 +81,7 @@ Our shell includes the following files:
 | int printenviron(char **tokens) | Prints the environment |
 
 ## Return Value
-This simple shell will exit with the status of 0 unless the status is otherwise specified.
+Shell will exit with the status of 0 unless the status is otherwise specified.
 
 ### Example Code
 ```
@@ -112,8 +111,6 @@ total 116
 -rw-rw-r-- 1 vagrant vagrant  1650 Mar 28 18:55 tokenize.c
 ```
 
-### Notes
-Other features are will be implemented in the future.
 
 ### Authors
 * [**Germaine Balmania**](https://github.com/guccigerm)
