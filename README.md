@@ -4,7 +4,7 @@
 A simplified recreation of the UNIX shell
 
 ## Description
-This shell can read, interpret, and execute commands.
+This shell can read, interpret, and execute commands. It handles the PATH variable, and supports the `env` and `exit` builtin commands
 
 ## Environment
 Built and tested with Ubuntu 14.04 LTS
