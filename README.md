@@ -4,7 +4,7 @@
 A simplified recreation of the UNIX shell
 
 ## Description
-This simple shell can read, interpret, and execute commands. Once the commands are executed, allocated memory is freed.
+This shell can read, interpret, and execute commands.
 
 ## Environment
 Built and tested with Ubuntu 14.04 LTS
