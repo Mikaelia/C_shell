@@ -122,8 +122,10 @@ void launch(char **args, free_t *stash, int count)
 	pid_t child_pid;
 	
 	//checks 'commands' stored in stash struct
+	// if command is builtin, executes
 	if (checkbuiltins(stash) == -1)
 	{
+		// if existing executable found in path, store in stash
 		if (checkpath(stash) == NULL)
 		{
 			stash->executable = NULL;
@@ -135,6 +137,7 @@ void launch(char **args, free_t *stash, int count)
 		}
 		if (child_pid == 0)
 		{
+			// calls execve with filename (commands[0]) and array of input arguments
 			if (execve(stash->commands[0], stash->commands, NULL) == -1)
 			{
 				if (stash->executable != NULL)
