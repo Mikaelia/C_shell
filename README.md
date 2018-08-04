@@ -15,11 +15,11 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o shell
 Run shell with the executable:
 ```./shell```
 
-Example commands: ```ls -la```, ```pwd```,  ```cat```, ```/bin/echo "hello"``` etc.
+Enter shell commands: ```ls -la```, ```pwd```,  ```cat```, ```/bin/echo "hello"``` etc.
 
 #### Example:
 ```
-vagrant:simple_shell$ ./hsh
+vagrant:simple_shell$ ./shell
 $ ls -l
 total 116
 -rw-rw-r-- 1 vagrant vagrant   241 Mar 18 22:00 AUTHORS
