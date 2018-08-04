@@ -36,7 +36,7 @@ char *findpath()
 {
 	int i;
 	char *path;
-	char *findmatch;
+	char *path_found;
 
 	i = 0;
 	pathvar = NULL;
@@ -44,10 +44,10 @@ char *findpath()
 	while (environ[i] != NULL)
 	{
 		// cycles through env variables
-		findmatch = path_match(environ[i]);
+		path_found = path_match(environ[i]);
 		if (findmatch)
 		{
-			path = findmatch;
+			path = path_found;
 			break;
 		}
 		else
