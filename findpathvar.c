@@ -30,7 +30,7 @@ char *path_match(char *envar)
 /**
   * findpath - finds the PATH variable within environmental variable list
   *
-  * Return: Pointer to executable path, or NULL on fail
+  * Return: Pointer to an executable's path, or NULL on fail
   */
 char *findpath()
 {
