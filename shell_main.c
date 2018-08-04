@@ -43,7 +43,7 @@ void shell_loop(char **av)
 	unsigned int interactive = 1;
 
 	// struct to hold program variables (see header file)
-	free_t stash = {NULL, NULL, NULL, NULL, NULL};
+	free_t stash = {NULL, NULL, NULL, NULL};
 	input = NULL;
 
 	signal(SIGINT, sig_handler);

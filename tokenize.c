@@ -58,17 +58,17 @@ int tokenize(free_t *stash)
 	stash->commands = malloc(sizeof(char *) * bufsize);
 
 	// split stored input, save as stash 'token' variable
-	stash->token = _strdup(strtok(stash->input, deliminator));
-	if (!stash->token)
+	token = _strdup(strtok(stash->input, deliminator));
+	if (!token)
 	{
 		write(STDOUT_FILENO, "\n", 1);
 		free(stash->commands);
 		return (0);
 	}
 	i = 0;
-	while (stash->token != NULL)
+	while (token != NULL)
 	{
-		stash->commands[i] = stash->token;
+		stash->commands[i] = token;
 		i++;
 		if (i >= bufsize)
 		{
@@ -84,7 +84,7 @@ int tokenize(free_t *stash)
 				return (0);
 			}
 		}
-		stash->token = _strdup(strtok(NULL, deliminator));
+		token = _strdup(strtok(NULL, deliminator));
 	}
 	stash->commands[i] = '\0';
 	return (1);

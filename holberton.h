@@ -36,7 +36,6 @@ typedef struct tokenlist_t
 typedef struct free_t
 {
 	char **commands;
-	char *token;
 	char *input;
 	char *executable;
 	char *pathvar;
