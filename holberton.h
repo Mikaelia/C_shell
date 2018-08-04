@@ -58,22 +58,18 @@ void free2list(char **);
 extern char **environ;
 
 /* helper functions */
-void sig_handler(int sig_handler);
-char *_realloc(void *ptr, unsigned int, unsigned int);
 int _strlen(char *);
 int _strcmp(char *s1, char *s2);
 void printerror(char **, int, char *);
 char *_strdup(char *);
-int checkbuiltins(free_t *stash);
-tokenlist_t *checkpath(free_t *stash);
+int _atoi(char *s)
 
 
 /* Append and Split Functions*/
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
 char *findpath(void);
 char **pathsplit(char*);
-void tokentolist(tokenlist_t **head, char *token);
-tokenlist_t *pathsplitlist(char *path);
+tokenlist_t *path_to_list(char *path);
 
 /* Builtin Handlers */
 int __exit(free_t *stash);

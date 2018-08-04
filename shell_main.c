@@ -33,10 +33,10 @@ void sig_handler(int sigint)
 
 /**
   * shell_loop - shell main program loop
-  * @av: argument variables
+  * @args: argument variables
   * Return: exit on termination of simple shell
   */
-void shell_loop(char **av)
+void shell_loop(char **args)
 {
 	char *input;
 	static int count = 1;
@@ -73,7 +73,7 @@ void shell_loop(char **av)
 		}
 
 		// execute command
-		launch(av, &stash, count);
+		launch(args, &stash, count);
 
 		// free memory
 		count++;
