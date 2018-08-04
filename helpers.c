@@ -75,3 +75,25 @@ int _atoi(char *s)
 	}
 	return (sum);
 }
+
+/**
+  * _strlen - finds length of string
+  * @string: input string
+  * Return: int length, or 0 on error/empty
+  */
+int _strlen(char *string)
+{
+	int i;
+
+	if (string == NULL)
+	{
+		return (0);
+	}
+	i = 0;
+	while (string[i] != '\0')
+	{
+		i++;
+	}
+	i++;
+	return (i);
+}

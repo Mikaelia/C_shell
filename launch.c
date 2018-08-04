@@ -1,5 +1,51 @@
 #include "holberton.h"
 /**
+  * appendcmd - creates new buffer to hold PATH value + user input
+  * @command: first argument passed through stdin
+  * @h: linked list head of PATH variables
+  * Return: pointer to newly allocated space with combined data
+  */
+char *appendcmd(const tokenlist_t *h, char *command)
+{
+	char *token;
+	char *new;
+	int sum, i, j;
+
+	sum = 0;
+	i = 0;
+	j = 0;
+	token = h->token;
+
+	if (h == NULL)
+		return (NULL);
+	if (command == NULL)
+		return (NULL);
+
+	sum += _strlen(token);
+	sum += _strlen(command);
+
+	new = malloc((sizeof(char) * sum) + 2);
+	if (new == NULL)
+	{
+		return (NULL);
+	}
+	while (token[i] != '\0')
+	{
+		new[i] = token[i];
+		i++;
+	}
+	new[i] = '/';
+	i++;
+	while (command[j] != '\0')
+	{
+		new[i] = command[j];
+		i++;
+		j++;
+	}
+	new[i] = '\0';
+	return (new);
+}
+/**
   * checkbuiltins - checks if input arg is a builtin
   * @stash: variable storage struct
   * Return: -1 if not builtin, 1 if 'printenv', exit if 'exit'
@@ -15,7 +61,7 @@ int checkbuiltins(free_t *stash)
 }
 
 /**
-  * checkpath - checks path for executable
+  * checkpath - checks PATH for executable
   * @stash: variable storage struct
   * Return: NULL if no match found, or executable file if found
   */

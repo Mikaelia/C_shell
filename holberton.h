@@ -62,7 +62,7 @@ int _strlen(char *);
 int _strcmp(char *s1, char *s2);
 void printerror(char **, int, char *);
 char *_strdup(char *);
-int _atoi(char *s)
+int _atoi(char *s);
 
 
 /* Append and Split Functions*/

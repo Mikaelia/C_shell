@@ -31,8 +31,8 @@ void token_to_list(tokenlist_t **head, char *token)
 	new->next = NULL;
 }
 /**
-  * path_to_list - splits path string into tokens, returns linked list
-  * @path: path variable string
+  * path_to_list - splits PATH string into tokens, returns linked list
+  * @path: PATH variable string
   *
   * Return: pointer to list head, or NULL on fail
   */
