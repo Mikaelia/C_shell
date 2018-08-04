@@ -27,7 +27,7 @@ Test out commands: ```ls -la```, ```pwd```,  ```cat```, ```/bin/echo "hello"``` 
 
 ## Built-Ins
 This shell supports the following built-in commands:
-+ ```env``` - Print the current environment
++ ```env``` - Prints current environmental variables
 + ```exit``` - Exit out of the shell
 
 ### Repository Contents
