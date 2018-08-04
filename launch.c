@@ -1,9 +1,9 @@
 #include "holberton.h"
 /**
-  * appendcmd - creates new buffer to hold PATH value + user input
+  * appendcmd - creates new buffer to append user input to end of path
   * @command: first argument passed through stdin
   * @h: linked list head of PATH variables
-  * Return: pointer to newly allocated space with combined data
+  * Return: pointer to newly allocated space with appended data
   */
 char *appendcmd(const tokenlist_t *h, char *command)
 {
@@ -47,7 +47,7 @@ char *appendcmd(const tokenlist_t *h, char *command)
 }
 /**
   * checkbuiltins - checks if input arg is a builtin
-  * @stash: variable storage struct
+  * @stash: variable storage struct, using 'commands'
   * Return: -1 if not builtin, 1 if 'printenv', exit if 'exit'
   */
 int checkbuiltins(free_t *stash)
@@ -61,7 +61,7 @@ int checkbuiltins(free_t *stash)
 }
 
 /**
-  * checkpath - checks PATH for executable
+  * checkpath - isolates PATH paths, appends commands, checks for resulting executable
   * @stash: variable storage struct
   * Return: NULL if no match found, or executable file if found
   */
@@ -82,11 +82,12 @@ tokenlist_t *checkpath(free_t *stash)
 		return (NULL);
 	}
 
-	//convert PATH variable contents to linked list
+	// convert PATH paths to linked list
 	pathlist = path_to_list(stash->pathvar);
 	head = pathlist;
 	while (pathlist)
 	{
+		// append first input argument to end of each path in PATH
 		temp = appendcmd(pathlist, stash->commands[0]);
 		stash->executable = _strdup(temp);
 		free(temp);
@@ -95,6 +96,7 @@ tokenlist_t *checkpath(free_t *stash)
 			freelist(head);
 			return (NULL);
 		}
+		// check for existence of executable
 		if (stat(stash->executable, &st) < 0)
 		{
 			free(stash->executable);
@@ -118,7 +120,8 @@ tokenlist_t *checkpath(free_t *stash)
 void launch(char **args, free_t *stash, int count)
 {
 	pid_t child_pid;
-
+	
+	//checks 'commands' stored in stash struct
 	if (checkbuiltins(stash) == -1)
 	{
 		if (checkpath(stash) == NULL)
