@@ -16,14 +16,14 @@ https://github.com/Mikaelia/simple_shell
 ```
 All files compiled with the flags:
 ```
-gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+gcc -Wall -Werror -Wextra -pedantic *.c -o shell
 ```
 
 ## Usage
 After compilation, the program initialized by running the executable:
-```./hsh```
+```./shell```
 
-Test out commands: ```ls -la```, ```pwd```,  ```cat``` etc.
+Test out commands: ```ls -la```, ```pwd```,  ```cat```, ```/bin/echo "hello"``` etc.
 
 ## Built-Ins
 This shell supports the following built-in commands:
@@ -35,22 +35,15 @@ This shell supports the following built-in commands:
 |  **File**  |   **Description**   |
 | ------------ | --------------------- |
 | holberton.h | Contains the C standard library header files, and struct and function declarations |
-| appendcmd.c | Creates a new buffer to hold node value and append user input |
-| checkbuiltins.c | Checks input for builtins |
-| checkpath.c | Checks path for executable |
-| exit.c | Exit builtin function |
-| findpathvar.c | Searchs for environmental variable string for the PATH name |
-| free2pointer.c | Frees a double pointer |
-| freelist.c | Frees the linked list |
-| helpers.c | String duplicate helper function |
-| launch.c | Forks the process and executes commands |
-| looper.c | Contiuous running loop of the shell |
-| pathtolinkedlist.c | Splits the path string into tokens, adds it to the linked list and returns the list  |
-| printenv.c | Prints the environment |
+| shellmain.c | Main function, prompt, and simple shell loop |
+| tokenize.c | Parses user input into tokens |
+| launch.c | Checks PATH for existing executable, checks for builtins, forks the process and executes commands |
+| builtins.c | Custom exit and env builtins |
+| findpathvar.c | Searchs for environmental variable string for the PATH name, returns executable path |
+| pathtolinkedlist.c | Splits the PATH string into tokens, and converts tokens to linked list |
+| free_memory.c | Functions to free memory |
+| helpers.c | Helper functions |
 | printerror.c | Prints error messages |
-| prompt.c | Reads the argument from standard input and returns a buffer string containining those arguments |
-| shellmain.c | Main function for the simple shell |
-| tokenize.c | Parses the input line into tokens |
 
 
 ### Description of Functions
@@ -75,7 +68,7 @@ This shell supports the following built-in commands:
 | char *appendcmd(const tokenlist_t *pathlist, char *arg) | Creates a new buffer and appends user input |
 | char *findpath(void) | Finds the path variable in environmental variable array |
 | char **pathsplit(char*) | Splits the PATH string into tokens |
-|void  tokenlist_t *tokentolist(tokenlist_t **head, char *token) | Turns the path token and returns it to a linked list  |
+| void  tokenlist_t *tokentolist(tokenlist_t **head, char *token) | Turns the path token and returns it to a linked list  |
 | tokenlist_t *pathsplitlist(char *path) | Turns token into a linked list  |
 | int __exit(free_t *stash) | Exits the shell |
 | int printenviron(char **tokens) | Prints the environment |
