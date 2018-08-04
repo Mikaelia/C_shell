@@ -9,10 +9,6 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <signal.h>
-
-
-/* STRUCTS */
-
 /**
   * struct tokenlist_t - linked list of parsed path variable string
   * @token: absolute path
@@ -25,14 +21,6 @@ typedef struct tokenlist_t
 	struct tokenlist_t *next;
 } tokenlist_t;
 
-/**
-  * struct free_t - struct that holds main shell variable values
-  * @commands: tokenized command input
-  * @token: command token
-  * @input: input line
-  * @executable: appended command to path var
-  * @pathvar: environmental PATH variable string
-  */
 typedef struct free_t
 {
 	char **commands;
@@ -42,13 +30,7 @@ typedef struct free_t
 	char *pathvar;
 } free_t;
 
-/* Main Functions */
-void shell_loop(char **);
-int _prompt(char **, free_t *stash);
-int tokenize(free_t *stash);
-void launch(char **av, free_t *stash, int count);
-
-/* Memory functions */
+/* free functions */
 
 void free2pointer(char **tokens);
 void freelist(tokenlist_t *head);
@@ -57,6 +39,7 @@ void free2list(char **);
 /*global variables */
 
 extern char **environ;
+unsigned int flag;
 
 /* helper functions */
 void sig_handler(int sig_handler);
@@ -65,19 +48,24 @@ int _strlen(char *);
 int _strcmp(char *s1, char *s2);
 void printerror(char **, int, char *);
 char *_strdup(char *);
+
+/* main functions */
+void looper(char **);
+int _prompt(char **, free_t *stash);
+int tokenize(free_t *stash);
+void launch(char **av, free_t *stash, int count);
+
+/*checkfunctions*/
 int checkbuiltins(free_t *stash);
-tokenlist_t *checkpath(free_t *stash);
-
-
-/* Append and Split Functions*/
+char *checkpath(free_t *stash);
 char *appendcmd(const tokenlist_t *pathlist, char *arg);
+char *_findpath(char *);
 char *findpath(void);
 char **pathsplit(char*);
-void tokentolist(tokenlist_t **head, char *token);
+tokenlist_t *tokentolist(tokenlist_t **head, char *token);
 tokenlist_t *pathsplitlist(char *path);
 
-/* Builtin Handlers */
+/* builtins */
 int __exit(free_t *stash);
 int printenviron(char **tokens);
-
 #endif

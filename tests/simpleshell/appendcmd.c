@@ -21,10 +21,10 @@ int _strlen(char *string)
 	return (i);
 }
 /**
-  * appendcmd - creates new buffer to hold nodeval + user input
+  * appendcmd - creates new buf to hold nodeval + user input
   * @command: first argument passed to input stream
   * @h: linked list head
-  * Return: pointer to newly allocated space with data
+  * Return: pointer to newly allocated space w data
   */
 char *appendcmd(const tokenlist_t *h, char *command)
 {
@@ -42,8 +42,8 @@ char *appendcmd(const tokenlist_t *h, char *command)
 	if (command == NULL)
 		return (NULL);
 
-	sum += _strlen(token);
-	sum += _strlen(command);
+	sum += strlen(token);
+	sum += strlen(command);
 
 	new = malloc((sizeof(char) * sum) + 2);
 	if (new == NULL)
