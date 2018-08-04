@@ -1,10 +1,11 @@
 #include "holberton.h"
 /**
- * _realloc - function that reallocates  memory space
- * @ptr: input string
- * @original: original size of  memory space
- * @resized: resized  memory space
- * Return: NULL or string
+ * _realloc - reallocates additional space in memory
+ * @ptr: user argument string
+ * @original: memory size to increase
+ * @resized: enlarged memory size
+ *
+ * Return: original buffer, NULL, or enlarged buffer containing argument data
  */
 char *_realloc(void *ptr, unsigned int original, unsigned int resized)
 {
@@ -40,9 +41,9 @@ char *_realloc(void *ptr, unsigned int original, unsigned int resized)
 	return (vptr);
 }
 /**
-  * tokenize - parses input line into tokens
-  * @stash: structure of pointers
-  * Return: Array of each word of string
+  * tokenize - parses input line into tokens, stores array of tokens stash struct
+  * @stash: shell program variable storage struct
+  * Return: Array of each command in input string
   */
 int tokenize(free_t *stash)
 {
@@ -51,9 +52,12 @@ int tokenize(free_t *stash)
 	int bufsize = 20;
 	int newsize;
 	char *newbuf;
+	char *token;
 
+	// allocate space for stash variable 'commands', an array of arg tokens
 	stash->commands = malloc(sizeof(char *) * bufsize);
 
+	// split stored input, save as stash 'token' variable
 	stash->token = _strdup(strtok(stash->input, deliminator));
 	if (!stash->token)
 	{
@@ -68,6 +72,7 @@ int tokenize(free_t *stash)
 		i++;
 		if (i >= bufsize)
 		{
+			// if input exceeds pre-allocated buffsize, reallocate extra space
 			newsize = bufsize + 5;
 			newbuf = _realloc(stash->commands,
 					  bufsize * sizeof(char *),
