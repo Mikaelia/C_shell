@@ -17,7 +17,7 @@ Run shell with the executable:
 
 Example commands: ```ls -la```, ```pwd```,  ```cat```, ```/bin/echo "hello"``` etc.
 
-### Example
+#### Example:
 ```
 vagrant:simple_shell$ ./hsh
 $ ls -l
