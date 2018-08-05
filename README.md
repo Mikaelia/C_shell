@@ -2,20 +2,23 @@
 
 > This UNIX shell can read, interpret, and execute commands. It handles the PATH variable, and supports the `env` and `exit` builtin commands
 
-## Environment
+## Installing/ Getting Started
+
+### Environment
 Built and tested with Ubuntu 14.04 LTS
 
-## Installing/ Getting Started
+### Steps
 Clone this repository and compile:
 ```
 gcc -Wall -Werror -Wextra -pedantic *.c -o shell
 ```
+You are now ready to use the shell
 
 ## Usage
-Run shell with the executable:
+Start the shell by running the executable:
 ```./shell```
 
-Enter shell commands: ```ls -la```, ```pwd```,  ```cat```, ```/bin/echo "hello"``` etc.
+Enter shell commands: ```ls -la```, ```pwd```,  ```cat```, or the absolute paths of executable files: ```/bin/echo "hello"``` etc.
 
 #### Example:
 ```
@@ -66,8 +69,6 @@ Shell will exit with the status of 0 unless otherwise specified.
 | free_memory.c | Functions to free memory |
 | helpers.c | Helper functions |
 | printerror.c | Prints error messages |
-
-
 
 
 ### Authors
