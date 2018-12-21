@@ -1,6 +1,6 @@
 ![shell header](https://github.com/Mikaelia/simple_shell/blob/master/header_img.png)
 
-# Simple Shell
+# C Shell
 
 > This UNIX shell can read, interpret, and execute commands. It handles the PATH variable, and supports the `env` and `exit` builtin commands
 
